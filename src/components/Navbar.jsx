@@ -86,7 +86,8 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Bangladesh's #1 Review Platform
+              
+Unlock the Power of Reviews with Darun
             </motion.p>
           </div>
         </Link>

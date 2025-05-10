@@ -1,9 +1,10 @@
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
-import Packages from '../components/Packages';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
+import FAQ from '../components/FAQ';
+import Team from '../components/Team';
 
 const Home = () => {
   return (
@@ -13,8 +14,9 @@ const Home = () => {
       </div>
       <div className="relative">
         <About />
+        <Team />
         <Services />
-        
+        <FAQ />
         <Testimonials />
         <Contact />
       </div>
@@ -22,4 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;

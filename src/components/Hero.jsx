@@ -1,112 +1,179 @@
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
-import hero1 from "../assets/hero1.png";
-import hero2 from "../assets/hero2.png";
-import hero3 from "../assets/hero3.png";
+import { FaUserCheck, FaStar, FaUsers, FaArrowRight } from 'react-icons/fa';
+
+const FeatureCard = ({ icon, title, description, delay }) => {
+  return (
+    <motion.div 
+      className="bg-white/10 backdrop-blur-lg p-5 rounded-xl border border-white/20 shadow-xl transition-all duration-300 hover:scale-[1.03] hover:bg-white/15 hover:border-[#915EFF]/50 group"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, type: 'spring', stiffness: 80 }}
+    >
+      <div className="flex items-center mb-3">
+        <div className="p-2 rounded-lg bg-[#915EFF]/20 mr-3 group-hover:bg-[#915EFF]/30 transition-all duration-300">
+          {icon}
+        </div>
+        <h3 className="text-white font-bold text-lg">{title}</h3>
+      </div>
+      <p className="text-secondary text-sm">{description}</p>
+    </motion.div>
+  );
+};
 
 const Hero = () => {
+  // Particles for the background effect
+  const particles = Array.from({ length: 20 }).map((_, index) => ({
+    id: index,
+    size: Math.random() * 4 + 1,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    duration: Math.random() * 20 + 10,
+    delay: Math.random() * 5,
+  }));
+
   return (
-    <section className="relative w-full h-screen">
-      <div className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-5`}>
-        <div className="flex flex-row w-full">
-          <div className="flex flex-col justify-center items-center mt-5 mr-2">
-            <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
-            <div className="w-1 sm:h-80 h-40 violet-gradient" />
+    <section className="relative w-full h-screen overflow-hidden">
+      {/* Animated background particles */}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full bg-[#915EFF]/20"
+          style={{
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            x: [0, Math.random() * 50 - 25, 0],
+            opacity: [0.1, 0.5, 0.1],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Main gradient background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#1a0b2e]/80 via-[#150829] to-[#000000] -z-10" />
+      
+      {/* Radial gradient overlay */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[70%] bg-[#915EFF]/5 rounded-full blur-[100px] -z-5" />
+
+      <div className={`${styles.paddingX} absolute inset-0 top-[100px] max-w-7xl mx-auto flex flex-col items-center gap-5`}>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8"
+        >
+          <h1 className={`${styles.heroHeadText} text-white`}>
+            Unlock the Power of <span className="text-[#915EFF] inline-block relative">
+              Reviews with Darun
+              <motion.div 
+                className="absolute -bottom-2 left-0 h-[6px] bg-[#915EFF]/30 rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+              />
+            </span>
+          </h1>
+          <motion.p 
+            className={`${styles.heroSubText} mt-2 text-white-100 max-w-3xl mx-auto`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            Connecting Businesses and Shoppers for Exceptional Experiences
+          </motion.p>
+        </motion.div>
+
+        {/* Hero content with features */}
+        <div className="flex flex-col w-full items-center justify-center gap-10 max-w-4xl mx-auto">
+          {/* Feature cards in a grid */}
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FeatureCard 
+              icon={<FaUserCheck className="text-[#915EFF] text-xl" />}
+              title="Business Profiles"
+              description="Create a dedicated profile to showcase your offers, services, and contact information to potential customers."
+              delay={0.3}
+            />
+            <FeatureCard 
+              icon={<FaStar className="text-[#915EFF] text-xl" />}
+              title="Review Collection"
+              description="Collect detailed reviews to build trust and enhance your online reputation with verified customer feedback."
+              delay={0.5}
+            />
+            <FeatureCard 
+              icon={<FaUsers className="text-[#915EFF] text-xl" />}
+              title="Active Shopper Communities"
+              description="Join vibrant communities of 10,000+ active members eagerly looking for businesses like yours."
+              delay={0.7}
+            />
           </div>
 
-          <div className="flex-1">
-            <h1 className={`${styles.heroHeadText} text-white`}>
-              Welcome to <span className="text-[#915EFF]">Darun Tech</span>
-            </h1>
-            <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-              Your One-Stop Solution for Digital Excellence
-            </p>
-            <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/20 shadow-lg transition-all duration-300 hover:scale-[1.03]">
-                <h3 className="text-white font-bold">Digital Marketing</h3>
-                <p className="text-secondary text-sm">Boost your online presence with our expert digital marketing services</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/20 shadow-lg transition-all duration-300 hover:scale-[1.03]">
-                <h3 className="text-white font-bold">Web Development</h3>
-                <p className="text-secondary text-sm">Custom websites and applications for your business needs</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-lg p-4 rounded-xl border border-white/20 shadow-lg transition-all duration-300 hover:scale-[1.03]">
-                <h3 className="text-white font-bold">Graphic Design</h3>
-                <p className="text-secondary text-sm">Stunning visuals that make your brand stand out</p>
-              </div>
+          {/* Stats Section */}
+          <motion.div 
+            className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mt-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            <div className="bg-black/30 backdrop-blur-lg p-6 rounded-xl border border-white/10 text-center">
+              <h3 className="text-[#915EFF] text-4xl font-bold mb-2">10,000+</h3>
+              <p className="text-white text-sm">Active Community Members</p>
             </div>
-          </div>
+            <div className="bg-black/30 backdrop-blur-lg p-6 rounded-xl border border-white/10 text-center">
+              <h3 className="text-[#915EFF] text-4xl font-bold mb-2">5,000+</h3>
+              <p className="text-white text-sm">Verified Business Profiles</p>
+            </div>
+            <div className="bg-black/30 backdrop-blur-lg p-6 rounded-xl border border-white/10 text-center">
+              <h3 className="text-[#915EFF] text-4xl font-bold mb-2">95%</h3>
+              <p className="text-white text-sm">Customer Satisfaction</p>
+            </div>
+          </motion.div>
 
-          {/* Desktop hero images - vertical, staggered, right of text */}
-          <div className="hidden md:flex flex-col justify-center items-end ml-8 gap-4 relative z-10">
-            {/* Blurred gradient/abstract background shape */}
-            <div className="absolute top-0 left-0 w-60 h-72 bg-gradient-to-br from-purple-500/40 via-blue-400/30 to-pink-400/30 blur-2xl rounded-full opacity-80 -z-10 -translate-x-14 -translate-y-10 animate-pulse" />
-            <motion.img 
-              src={hero1} 
-              alt="Hero 1" 
-              className="w-28 h-28 rounded-2xl shadow-2xl object-cover bg-white/20 hover:scale-110 hover:shadow-purple-400 transition-all duration-500 mb-2 ring-2 ring-purple-300/40"
-              initial={{ opacity: 0, y: 50, scale: 0.85 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.3, type: 'spring', stiffness: 80 }}
-              style={{ zIndex: 30 }}
-            />
-            <motion.img 
-              src={hero2} 
-              alt="Hero 2" 
-              className="w-36 h-36 rounded-2xl shadow-2xl object-cover bg-white/20 hover:scale-110 hover:shadow-purple-400 transition-all duration-500 -mt-6 ml-6 ring-2 ring-blue-300/40"
-              initial={{ opacity: 0, y: 50, scale: 0.85 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.5, type: 'spring', stiffness: 80 }}
-              style={{ zIndex: 20 }}
-            />
-            <motion.img 
-              src={hero3} 
-              alt="Hero 3" 
-              className="w-24 h-24 rounded-2xl shadow-2xl object-cover bg-white/20 hover:scale-110 hover:shadow-purple-400 transition-all duration-500 -mt-4 ml-12 ring-2 ring-pink-300/40"
-              initial={{ opacity: 0, y: 50, scale: 0.85 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.7, type: 'spring', stiffness: 80 }}
-              style={{ zIndex: 10 }}
-            />
-          </div>
-        </div>
-        {/* Mobile layout for hero images - row below text */}
-        <div className="flex md:hidden flex-row justify-center items-center gap-4 mt-8 w-full relative">
-          {/* Blurred gradient/abstract background shape for mobile */}
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-60 h-32 bg-gradient-to-br from-purple-500/40 via-blue-400/30 to-pink-400/30 blur-2xl rounded-full opacity-80 -z-10 animate-pulse" />
-          <motion.img 
-            src={hero1} 
-            alt="Hero 1" 
-            className="w-16 h-16 rounded-xl shadow-lg object-cover bg-white/20 hover:scale-110 hover:shadow-purple-400 transition-all duration-500 ring-2 ring-purple-300/40"
-            initial={{ opacity: 0, y: 30, scale: 0.85 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.3, type: 'spring', stiffness: 80 }}
+          {/* Animated Divider */}
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-transparent via-[#915EFF] to-transparent rounded-full my-4"
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: 96, opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
           />
-          <motion.img 
-            src={hero2} 
-            alt="Hero 2" 
-            className="w-20 h-20 rounded-xl shadow-lg object-cover bg-white/20 hover:scale-110 hover:shadow-purple-400 transition-all duration-500 ring-2 ring-blue-300/40"
-            initial={{ opacity: 0, y: 30, scale: 0.85 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.5, type: 'spring', stiffness: 80 }}
-          />
-          <motion.img 
-            src={hero3} 
-            alt="Hero 3" 
-            className="w-14 h-14 rounded-xl shadow-lg object-cover bg-white/20 hover:scale-110 hover:shadow-purple-400 transition-all duration-500 ring-2 ring-pink-300/40"
-            initial={{ opacity: 0, y: 30, scale: 0.85 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.7, type: 'spring', stiffness: 80 }}
-          />
+
+          {/* CTA Buttons */}
+          <motion.div 
+            className="flex flex-wrap gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.5 }}
+          >
+            <a href="#services" className="bg-[#915EFF] text-white px-8 py-4 rounded-full font-medium hover:bg-[#7d51d6] transition-all duration-300 shadow-lg hover:shadow-[#915EFF]/40 flex items-center justify-center group">
+              Explore Packages
+              <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </a>
+            <a href="#contact" className="border border-[#915EFF] text-white px-8 py-4 rounded-full font-medium hover:bg-[#915EFF]/10 transition-all duration-300 shadow-lg flex items-center justify-center">
+              Get Started
+            </a>
+          </motion.div>
         </div>
       </div>
 
-
-
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
+      {/* Scroll indicator */}
+      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-end px-8">
         <a href="#about">
-          <div className="w-[40px] h-[70px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2 bg-white/10 backdrop-blur-md shadow-lg">
+          <motion.div 
+            className="w-[40px] h-[70px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2 bg-black/20 backdrop-blur-md shadow-lg hover:border-[#915EFF] transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+          >
             <motion.div
               animate={{
                 y: [0, 24, 0],
@@ -121,9 +188,9 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1 shadow-lg"
+              className="w-3 h-3 rounded-full bg-[#915EFF] mb-1 shadow-lg"
             />
-          </div>
+          </motion.div>
         </a>
       </div>
     </section>

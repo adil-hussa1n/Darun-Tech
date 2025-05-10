@@ -1,101 +1,236 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { styles } from '../styles';
+import { fadeIn } from '../utils/motion';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import logo from '../assets/logo.png';
 
 const Footer = () => {
   return (
-    <footer className="relative w-full mx-auto bg-tertiary py-12">
-      <div className={`${styles.paddingX} max-w-7xl mx-auto`}>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-white text-[20px] font-bold mb-4">Darun Tech</h3>
-            <p className="text-secondary text-sm">
+    <footer className="relative w-full mx-auto bg-gradient-to-b from-[#151030] to-[#050816] py-12 overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-[#915EFF]/5 blur-3xl"></div>
+      <div className="absolute -left-20 -bottom-20 w-72 h-72 rounded-full bg-[#915EFF]/5 blur-3xl"></div>
+      
+      <div className={`${styles.paddingX} max-w-7xl mx-auto relative z-10`}>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
+              </div>
+              <h3 className="text-white text-[20px] font-bold">Darun Tech</h3>
+            </div>
+            <p className="text-secondary text-sm leading-relaxed">
               Your trusted partner for digital solutions in Bangladesh. We help businesses grow through innovative technology and creative solutions.
             </p>
-          </div>
+            <div className="mt-6 bg-tertiary p-4 rounded-lg border border-[#333] hover:border-[#915EFF] transition-colors duration-300">
+              <p className="text-white text-sm font-medium mb-2">Subscribe to our newsletter</p>
+              <div className="flex">
+                <input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="bg-[#1a1a1a] text-white text-sm rounded-l-lg px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-[#915EFF]"
+                />
+                <button className="bg-[#915EFF] text-white text-sm font-medium rounded-r-lg px-4 hover:bg-[#7a4ecc] transition-colors duration-300">
+                  Send
+                </button>
+              </div>
+            </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-white text-[20px] font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-white text-[20px] font-bold mb-4 relative inline-block">
+              Quick Links
+              <span className="absolute -bottom-1 left-0 w-1/2 h-[2px] bg-[#915EFF]"></span>
+            </h3>
+            <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-secondary hover:text-white transition-colors">
+                <Link to="/" className="text-secondary hover:text-white transition-colors flex items-center group">
+                  <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-secondary hover:text-white transition-colors">
+                <Link to="/about" className="text-secondary hover:text-white transition-colors flex items-center group">
+                  <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-secondary hover:text-white transition-colors">
+                <Link to="/services" className="text-secondary hover:text-white transition-colors flex items-center group">
+                  <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/packages" className="text-secondary hover:text-white transition-colors">
+                <Link to="/packages" className="text-secondary hover:text-white transition-colors flex items-center group">
+                  <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                   Packages
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-secondary hover:text-white transition-colors">
+                <Link to="/contact" className="text-secondary hover:text-white transition-colors flex items-center group">
+                  <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                   Contact
                 </Link>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-white text-[20px] font-bold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li className="text-secondary">Digital Marketing</li>
-              <li className="text-secondary">Web Development</li>
-              <li className="text-secondary">Graphic Design</li>
-              <li className="text-secondary">Review Platform</li>
-              <li className="text-secondary">SEO Services</li>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-white text-[20px] font-bold mb-4 relative inline-block">
+              Services
+              <span className="absolute -bottom-1 left-0 w-1/2 h-[2px] bg-[#915EFF]"></span>
+            </h3>
+            <ul className="space-y-3">
+              <li className="text-secondary hover:text-white transition-colors cursor-pointer flex items-center group">
+                <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
+                Social Media Marketing Solution
+              </li>
+              <li className="text-secondary hover:text-white transition-colors cursor-pointer flex items-center group">
+                <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
+                Darun Mega Exposure
+              </li>
+              <li className="text-secondary hover:text-white transition-colors cursor-pointer flex items-center group">
+                <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
+                Darun Business Spotlight
+              </li>
+              <li className="text-secondary hover:text-white transition-colors cursor-pointer flex items-center group">
+                <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
+                Darun Business Essentials
+              </li>
+              <li className="text-secondary hover:text-white transition-colors cursor-pointer flex items-center group">
+                <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
+                Darun Free Basic Listing
+              </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-white text-[20px] font-bold mb-4">Contact Info</h3>
-            <ul className="space-y-2">
-              <li className="text-secondary">
-                <span className="font-bold text-white">Address:</span> 123 Business Street, Dhaka, Bangladesh
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-white text-[20px] font-bold mb-4 relative inline-block">
+              Contact Info
+              <span className="absolute -bottom-1 left-0 w-1/2 h-[2px] bg-[#915EFF]"></span>
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <div className="bg-[#1a1a1a] p-2 rounded-full mr-3 mt-1">
+                  <FaMapMarkerAlt className="text-[#915EFF] text-sm" />
+                </div>
+                <div>
+                  <span className="font-medium text-white block mb-1">Address</span>
+                  <span className="text-secondary text-sm">123 Business Street, Dhaka, Bangladesh</span>
+                </div>
               </li>
-              <li className="text-secondary">
-                <span className="font-bold text-white">Phone:</span> +880 1234 567890
+              <li className="flex items-start">
+                <div className="bg-[#1a1a1a] p-2 rounded-full mr-3 mt-1">
+                  <FaPhone className="text-[#915EFF] text-sm" />
+                </div>
+                <div>
+                  <span className="font-medium text-white block mb-1">Phone</span>
+                  <a href="tel:+8801234567890" className="text-secondary text-sm hover:text-[#915EFF] transition-colors">
+                    +880 1234 567890
+                  </a>
+                </div>
               </li>
-              <li className="text-secondary">
-                <span className="font-bold text-white">Email:</span> info@daruntech.com
+              <li className="flex items-start">
+                <div className="bg-[#1a1a1a] p-2 rounded-full mr-3 mt-1">
+                  <FaEnvelope className="text-[#915EFF] text-sm" />
+                </div>
+                <div>
+                  <span className="font-medium text-white block mb-1">Email</span>
+                  <a href="mailto:info@daruntech.com" className="text-secondary text-sm hover:text-[#915EFF] transition-colors">
+                    info@daruntech.com
+                  </a>
+                </div>
               </li>
             </ul>
-            <div className="mt-4 flex space-x-4">
-              <a href="#" className="text-secondary hover:text-white transition-colors">
-                <span className="sr-only">Facebook</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                </svg>
-              </a>
-              <a href="#" className="text-secondary hover:text-white transition-colors">
-                <span className="sr-only">Twitter</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                </svg>
-              </a>
-              <a href="#" className="text-secondary hover:text-white transition-colors">
-                <span className="sr-only">LinkedIn</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </a>
+            <div className="mt-6">
+              <p className="text-white text-sm mb-3">Follow us on social media</p>
+              <div className="flex space-x-3">
+                <motion.a 
+                  href="https://facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-[#1a1a1a] p-2 rounded-full text-[#915EFF] hover:bg-[#915EFF] hover:text-white transition-colors duration-300"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaFacebookF className="text-lg" />
+                </motion.a>
+                <motion.a 
+                  href="https://twitter.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-[#1a1a1a] p-2 rounded-full text-[#915EFF] hover:bg-[#915EFF] hover:text-white transition-colors duration-300"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaTwitter className="text-lg" />
+                </motion.a>
+                <motion.a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-[#1a1a1a] p-2 rounded-full text-[#915EFF] hover:bg-[#915EFF] hover:text-white transition-colors duration-300"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaLinkedinIn className="text-lg" />
+                </motion.a>
+                <motion.a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-[#1a1a1a] p-2 rounded-full text-[#915EFF] hover:bg-[#915EFF] hover:text-white transition-colors duration-300"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaInstagram className="text-lg" />
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-12 pt-8 border-t border-[#333] text-center"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-secondary text-sm">
+              © {new Date().getFullYear()} Darun Tech. All rights reserved.
+            </p>
+            <div className="mt-4 md:mt-0 flex space-x-6">
+              <a href="#" className="text-secondary hover:text-white text-sm transition-colors">Privacy Policy</a>
+              <a href="#" className="text-secondary hover:text-white text-sm transition-colors">Terms of Service</a>
+              <a href="#" className="text-secondary hover:text-white text-sm transition-colors">Cookie Policy</a>
             </div>
           </div>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-[#333] text-center">
-          <p className="text-secondary text-sm">
-            © {new Date().getFullYear()} Darun Tech. All rights reserved.
-          </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

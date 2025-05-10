@@ -15,10 +15,10 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Set a timeout to match the preloader duration
+    // Set a shorter timeout for the preloader to improve user experience
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000); // Match this with the preloader duration (20s delay + 3s fade)
+    }, 2500); // Reduced from 5000ms to 2500ms for faster loading
     
     return () => clearTimeout(timer);
   }, []);
@@ -31,7 +31,11 @@ const App = () => {
         ) : (
           <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
             <Navbar />
-            <Suspense fallback={null}> {/* No loader shown after preloader is done */}
+            <Suspense fallback={
+              <div className="flex justify-center items-center min-h-screen">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#915EFF]"></div>
+              </div>
+            }>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

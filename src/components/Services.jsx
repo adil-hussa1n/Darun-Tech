@@ -4,7 +4,7 @@ import { Tilt } from 'react-tilt';
 import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
 import { useState } from 'react';
 
-const ServiceCard = ({ index, title, icon, id, onClick, isSelected }) => {
+const ServiceCard = ({ index, title, icon, id, description, onClick, isSelected }) => {
   return (
     <Tilt 
       className="xs:w-[250px] w-full"
@@ -12,52 +12,87 @@ const ServiceCard = ({ index, title, icon, id, onClick, isSelected }) => {
         max: 25,
         scale: 1.05,
         speed: 450,
+        glare: true,
+        "max-glare": 0.2,
       }}
     >
       <motion.div
         variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-        className={`w-full ${isSelected ? 'violet-gradient' : 'green-pink-gradient'} p-[1px] rounded-[20px] shadow-card`}
-        whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(145, 94, 255, 0.5)" }}
+        className={`w-full ${isSelected ? 'violet-gradient' : 'green-pink-gradient'} p-[1px] rounded-[20px] shadow-card overflow-hidden`}
+        whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(145, 94, 255, 0.6)" }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
+        {/* Animated background particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {isSelected && Array(5).fill().map((_, i) => (
+            <div 
+              key={i}
+              className="absolute w-2 h-2 rounded-full bg-[#915EFF]/30"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${3 + Math.random() * 4}s ease-in-out ${Math.random() * 2}s infinite alternate`
+              }}
+            />
+          ))}
+        </div>
+
         <motion.div 
-          className={`bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col cursor-pointer transition-all duration-300 ${isSelected ? 'bg-[#2d2b52] border-[#915EFF] border-opacity-50' : ''}`}
+          className={`bg-tertiary rounded-[20px] py-5 px-6 min-h-[320px] flex justify-evenly items-center flex-col cursor-pointer transition-all duration-300 ${isSelected ? 'bg-[#2d2b52] border-[#915EFF] border-opacity-50' : ''} relative z-10`}
           onClick={() => onClick(id, title)}
           whileHover={{ y: -5 }}
           whileTap={{ scale: 0.98 }}
         >
+          {/* Status indicator */}
+          {isSelected && (
+            <div className="absolute top-3 right-3 flex items-center">
+              <span className="h-2 w-2 rounded-full bg-[#915EFF] mr-1 animate-pulse"></span>
+              <span className="text-xs text-[#915EFF] font-medium">Selected</span>
+            </div>
+          )}
+
           <motion.div
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.1, rotate: [0, 5, -5, 0] }}
             transition={{ duration: 0.5 }}
-            className="p-3 rounded-full bg-[#151030]/50 backdrop-blur-sm mb-2"
+            className="p-3 rounded-full bg-gradient-to-br from-[#151030]/80 to-[#2a1d5c]/50 backdrop-blur-sm mb-4 shadow-lg"
           >
             <img
               src={icon}
               alt={title}
-              className="w-16 h-16 object-contain"
+              className="w-16 h-16 object-contain drop-shadow-lg"
             />
           </motion.div>
           
           <motion.div className="text-center">
-            <h3 className="text-white text-[20px] font-bold mb-2">
+            <h3 className="text-white text-[20px] font-bold mb-3">
               {title}
             </h3>
+            <p className="text-secondary text-[14px] mb-4">
+              {description}
+            </p>
             {isSelected ? (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-[#915EFF] text-sm font-medium"
+                className="mt-2 bg-[#915EFF] text-white text-sm font-medium py-2 px-4 rounded-full flex items-center justify-center group"
               >
-                View Packages ↓
+                View Package Details
+                <svg className="w-4 h-4 ml-1 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
               </motion.div>
             ) : (
               <motion.div 
                 initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                className="text-gray-400 text-sm"
+                animate={{ opacity: 0.8 }}
+                whileHover={{ opacity: 1, scale: 1.05 }}
+                className="mt-2 border border-[#915EFF] text-[#915EFF] text-sm py-2 px-4 rounded-full flex items-center justify-center group"
               >
-                Click to view packages
+                Click for Details
+                <svg className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
               </motion.div>
             )}
           </motion.div>
@@ -69,255 +104,233 @@ const ServiceCard = ({ index, title, icon, id, onClick, isSelected }) => {
 
 // Define packages for different services
 const servicePackages = {
-  'web-dev': [
+  'package-1': [
     {
-      name: "Starter",
-      price: "৳15,000",
-      period: "per month",
-      description: "Perfect for small businesses starting their digital journey",
+      name: "Social Media Marketing Solution",
+      price: "Varies",
+      period: "based on business needs",
+      description: "Enhance your online presence, engage your audience, and drive results.",
       features: [
-        "Basic Website Design",
-        "5 Social Media Posts",
-        "Basic SEO Setup",
-        "Email Support",
-        "Monthly Analytics Report"
+        "Brainstorming sessions",
+        "Promotional offer development",
+        "Meta (formerly Facebook) ads",
+        "Visual graphics",
+        "Customizable KPIs"
       ],
-      popular: false
-    },
-    {
-      name: "Professional",
-      price: "৳30,000",
-      period: "per month",
-      description: "Ideal for growing businesses looking to expand their online presence",
-      features: [
-        "Custom Website Development",
-        "15 Social Media Posts",
-        "Advanced SEO",
-        "Priority Support",
-        "Weekly Analytics Report",
-        "Content Creation",
-        "Basic Graphic Design"
-      ],
-      popular: true
-    },
-    {
-      name: "Enterprise",
-      price: "৳50,000",
-      period: "per month",
-      description: "Comprehensive solution for established businesses",
-      features: [
-        "Full Stack Web Development",
-        "Unlimited Social Media Posts",
-        "Premium SEO Services",
-        "24/7 Support",
-        "Daily Analytics Report",
-        "Content Strategy",
-        "Premium Graphic Design",
-        "Review Platform Integration"
-      ],
-      popular: false
+      popular: false,
+      benefits: [
+        "Increased brand awareness",
+        "Higher engagement rates",
+        "Targeted audience reach",
+        "Measurable results",
+        "Professional content creation"
+      ]
     }
   ],
-  'ui-ux': [
+  'package-2': [
     {
-      name: "Basic Design",
+      name: "Darun Mega Exposure",
       price: "৳10,000",
-      period: "per project",
-      description: "Essential UI/UX design for startups and small businesses",
+      period: "per month",
+      description: "Feature your brand prominently on Darun platforms with extensive audience reach.",
       features: [
-        "User Research",
-        "Wireframing",
-        "Basic UI Design",
-        "1 Revision Round",
-        "Design Handoff"
+        "Prominent placement on Darun platforms",
+        "Extensive audience reach",
+        "Priority visibility",
+        "Enhanced brand recognition",
+        "Performance analytics",
+        "৳15,000 taka per month when combined with Package 1"
       ],
-      popular: false
-    },
-    {
-      name: "Premium Design",
-      price: "৳25,000",
-      period: "per project",
-      description: "Comprehensive UI/UX design for growing businesses",
-      features: [
-        "In-depth User Research",
-        "User Personas",
-        "Wireframing & Prototyping",
-        "High-fidelity UI Design",
-        "3 Revision Rounds",
-        "Design System",
-        "Design Handoff"
-      ],
-      popular: true
-    },
-    {
-      name: "Enterprise Design",
-      price: "৳45,000",
-      period: "per project",
-      description: "End-to-end UX/UI design solution for large enterprises",
-      features: [
-        "Comprehensive User Research",
-        "User Personas & Journey Maps",
-        "Information Architecture",
-        "Wireframing & Interactive Prototyping",
-        "Complete UI Design",
-        "Unlimited Revisions",
-        "Custom Design System",
-        "Animation & Micro-interactions"
-      ],
-      popular: false
+      popular: true,
+      benefits: [
+        "Maximum visibility to over 10,000 active users",
+        "Premium positioning in search results",
+        "Featured in Darun's promotional materials",
+        "Priority customer support",
+        "Monthly performance reports"
+      ]
     }
   ],
-  'mobile-dev': [
+  'package-3': [
     {
-      name: "Basic App",
-      price: "৳30,000",
-      period: "per app",
-      description: "Simple mobile app for startups and small businesses",
+      name: "Darun Business Spotlight",
+      price: "৳10,000",
+      period: "per month",
+      description: "Maximize visibility and engagement with featured presence and strategic promotions.",
       features: [
-        "Single Platform (Android or iOS)",
-        "Basic UI Design",
-        "Up to 5 Screens",
-        "Basic Functionality",
-        "1 Month Support"
+        "Featured presence",
+        "Strategic group posts",
+        "Enhanced cashback incentives",
+        "Verified profile",
+        "Customized dashboard",
+        "Push notifications",
+        "Darun boosting"
       ],
-      popular: false
-    },
-    {
-      name: "Standard App",
-      price: "৳60,000",
-      period: "per app",
-      description: "Feature-rich mobile app for growing businesses",
-      features: [
-        "Cross-Platform (Android & iOS)",
-        "Custom UI/UX Design",
-        "Up to 10 Screens",
-        "API Integration",
-        "User Authentication",
-        "Push Notifications",
-        "3 Months Support"
-      ],
-      popular: true
-    },
-    {
-      name: "Premium App",
-      price: "৳100,000",
-      period: "per app",
-      description: "Advanced mobile application for enterprises",
-      features: [
-        "Cross-Platform (Android & iOS)",
-        "Premium UI/UX Design",
-        "Unlimited Screens",
-        "Complex API Integrations",
-        "Advanced Authentication",
-        "Push Notifications",
-        "In-App Purchases",
-        "Analytics Integration",
-        "6 Months Support"
-      ],
-      popular: false
+      popular: false,
+      benefits: [
+        "Increased customer engagement",
+        "Higher conversion rates",
+        "Improved brand loyalty",
+        "Competitive advantage",
+        "Targeted promotional opportunities"
+      ]
     }
   ],
-  'backend-dev': [
+  'package-4': [
     {
-      name: "Basic Backend",
-      price: "৳20,000",
+      name: "Darun Business Essentials",
+      price: "৳8,000",
       period: "per month",
-      description: "Essential backend services for small applications",
+      description: "Boost your online presence with essential business tools and verified status.",
       features: [
-        "RESTful API Development",
-        "Basic Database Setup",
-        "User Authentication",
-        "Cloud Deployment",
-        "Basic Documentation"
+        "Verified badge",
+        "Customized dashboard",
+        "Enhanced cashback incentives",
+        "Darun boosting",
+        "Group posts"
       ],
-      popular: false
-    },
+      popular: false,
+      benefits: [
+        "Establish credibility with verified status",
+        "Track performance with custom dashboard",
+        "Attract customers with cashback offers",
+        "Increase visibility with boosting",
+        "Connect with community through group posts"
+      ]
+    }
+  ],
+  'package-5': [
     {
-      name: "Advanced Backend",
-      price: "৳40,000",
-      period: "per month",
-      description: "Comprehensive backend solution for medium-sized applications",
+      name: "Darun Free Basic Listing",
+      price: "Free",
+      period: "",
+      description: "Get started with a foundational presence on Darun at no cost.",
       features: [
-        "RESTful API Development",
-        "Database Design & Optimization",
-        "Advanced Authentication & Authorization",
-        "Third-party API Integration",
-        "Cloud Deployment & Scaling",
-        "Detailed Documentation",
-        "1 Month Support"
+        "Verified individual profile",
+        "Basic customized dashboard",
+        "Standard visibility",
+        "Customer reviews",
+        "Community access"
       ],
-      popular: true
-    },
-    {
-      name: "Enterprise Backend",
-      price: "৳80,000",
-      period: "per month",
-      description: "High-performance backend infrastructure for large applications",
-      features: [
-        "RESTful & GraphQL API Development",
-        "Advanced Database Architecture",
-        "Microservices Implementation",
-        "Authentication & Security Hardening",
-        "Multiple Third-party Integrations",
-        "CI/CD Pipeline Setup",
-        "Load Balancing & Auto-scaling",
-        "Comprehensive Documentation",
-        "3 Months Support"
-      ],
-      popular: false
+      popular: false,
+      benefits: [
+        "No cost entry to the Darun platform",
+        "Build your online presence",
+        "Collect customer reviews",
+        "Monitor basic performance metrics",
+        "Upgrade anytime to premium packages"
+      ]
     }
   ]
 };
 
 // Package Card Component
-const PackageCard = ({ index, name, price, period, description, features, popular }) => (
-  <motion.div
-    className={`w-full p-8 rounded-[20px] shadow-card ${
-      popular ? 'bg-[#915EFF]' : 'bg-tertiary'
-    } relative`}
-    whileHover={{ 
-      y: -10,
-      boxShadow: popular ? 
-        "0 20px 30px rgba(145, 94, 255, 0.3)" : 
-        "0 20px 30px rgba(0, 0, 0, 0.3)"
-    }}
-    transition={{ type: "spring", stiffness: 300, damping: 15 }}
-  >
-    {popular && (
-      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white text-[#915EFF] px-4 py-1 rounded-full text-sm font-bold">
-        Most Popular
-      </div>
-    )}
-    <h3 className="text-white text-[24px] font-bold mb-2">{name}</h3>
-    <div className="flex items-baseline mb-4">
-      <span className="text-white text-[32px] font-bold">{price}</span>
-      <span className="text-secondary ml-2">{period}</span>
-    </div>
-    <p className="text-secondary mb-6">{description}</p>
-    <ul className="space-y-3">
-      {features.map((feature, i) => (
-        <li key={i} className="flex items-center text-white">
-          <span className="mr-2">✓</span>
-          {feature}
-        </li>
-      ))}
-    </ul>
-    <motion.button 
-      className={`mt-8 w-full py-3 px-6 rounded-lg font-bold ${
-        popular ? 'bg-white text-[#915EFF]' : 'bg-[#915EFF] text-white'
-      }`}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+const PackageCard = ({ index, name, price, period, description, features, benefits, popular }) => {
+  // Create a CSS animation keyframe for the floating effect
+  const floatKeyframes = `
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+  `;
+
+  return (
+    <motion.div
+      className={`w-full p-8 rounded-[20px] shadow-card ${
+        popular ? 'bg-gradient-to-br from-[#915EFF] to-[#6a3bbd]' : 'bg-tertiary'
+      } relative overflow-hidden`}
+      whileHover={{ 
+        y: -10,
+        boxShadow: popular ? 
+          "0 20px 30px rgba(145, 94, 255, 0.4)" : 
+          "0 20px 30px rgba(0, 0, 0, 0.3)"
+      }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 15 }}
     >
-      Get Started
-    </motion.button>
-  </motion.div>
-);
+      {/* Add the keyframes for the floating animation */}
+      <style dangerouslySetInnerHTML={{ __html: floatKeyframes }} />
+
+      {/* Decorative elements */}
+      <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-white opacity-5"></div>
+      <div className="absolute -left-4 -bottom-4 w-16 h-16 rounded-full bg-white opacity-5"></div>
+      
+      {popular && (
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white text-[#915EFF] px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+          Most Popular
+        </div>
+      )}
+
+      <div className="relative z-10">
+        <h3 className="text-white text-[24px] font-bold mb-2">{name}</h3>
+        <div className="flex items-baseline mb-4">
+          <span className="text-white text-[32px] font-bold">{price}</span>
+          <span className={`${popular ? 'text-white/80' : 'text-secondary'} ml-2`}>{period}</span>
+        </div>
+        <p className={`${popular ? 'text-white/80' : 'text-secondary'} mb-6`}>{description}</p>
+        
+        <div className="mb-4">
+          <h4 className={`${popular ? 'text-white' : 'text-[#915EFF]'} font-bold mb-2`}>Features:</h4>
+          <ul className="space-y-3">
+            {features.map((feature, i) => (
+              <li key={i} className="flex items-start text-white group">
+                <span className={`mr-2 mt-1 flex-shrink-0 ${popular ? 'text-white' : 'text-[#915EFF]'}`}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </span>
+                <span className="group-hover:translate-x-1 transition-transform duration-300">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div className="mb-6">
+          <h4 className={`${popular ? 'text-white' : 'text-[#915EFF]'} font-bold mb-2`}>Benefits:</h4>
+          <ul className="space-y-3">
+            {benefits.map((benefit, i) => (
+              <li key={i} className="flex items-start text-white group">
+                <span className={`mr-2 mt-1 flex-shrink-0 ${popular ? 'text-white' : 'text-[#915EFF]'}`}>
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                  </svg>
+                </span>
+                <span className="group-hover:translate-x-1 transition-transform duration-300">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <motion.button 
+          className={`mt-8 w-full py-3 px-6 rounded-lg font-bold flex items-center justify-center group ${
+            popular ? 'bg-white text-[#915EFF]' : 'bg-[#915EFF] text-white'
+          }`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          Get Started
+          <svg 
+            className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </motion.button>
+      </div>
+    </motion.div>
+  );
+};
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [showPackages, setShowPackages] = useState(false);
+  const [activeTab, setActiveTab] = useState('all');
   
   const handleServiceClick = (serviceId, serviceTitle) => {
     // If clicking the same service, toggle it off
@@ -351,55 +364,133 @@ const Services = () => {
   
   const services = [
     {
-      id: "web-dev",
-      title: "Web Development",
-      icon: "https://cdn-icons-png.flaticon.com/512/2282/2282188.png",
+      id: "package-1",
+      title: "Social Media Marketing Solution",
+      icon: "https://cdn-icons-png.flaticon.com/512/2626/2626269.png",
+      description: "Enhance your online presence, engage your audience, and drive results.",
+      category: "marketing"
     },
     {
-      id: "ui-ux",
-      title: "UI/UX Design",
-      icon: "https://cdn-icons-png.flaticon.com/512/2282/2282188.png",
+      id: "package-2",
+      title: "Darun Mega Exposure",
+      icon: "https://cdn-icons-png.flaticon.com/512/1055/1055687.png",
+      description: "Feature your brand prominently on Darun platforms.",
+      category: "premium"
     },
     {
-      id: "mobile-dev",
-      title: "Mobile Development",
-      icon: "https://cdn-icons-png.flaticon.com/512/2282/2282188.png",
+      id: "package-3",
+      title: "Darun Business Spotlight",
+      icon: "https://cdn-icons-png.flaticon.com/512/1086/1086741.png",
+      description: "Maximize visibility and engagement with featured presence.",
+      category: "premium"
     },
     {
-      id: "backend-dev",
-      title: "Backend Development",
-      icon: "https://cdn-icons-png.flaticon.com/512/2282/2282188.png",
+      id: "package-4",
+      title: "Darun Business Essentials",
+      icon: "https://cdn-icons-png.flaticon.com/512/1378/1378628.png",
+      description: "Boost your online presence with essential business tools.",
+      category: "essential"
     },
+    {
+      id: "package-5",
+      title: "Darun Free Basic Listing",
+      icon: "https://cdn-icons-png.flaticon.com/512/3500/3500833.png",
+      description: "Get started with a verified profile and dashboard—absolutely free.",
+      category: "free"
+    },
+  ];
+
+  // Filter services based on active tab
+  const filteredServices = activeTab === 'all' 
+    ? services 
+    : services.filter(service => service.category === activeTab);
+
+  // Define category tabs
+  const categories = [
+    { id: 'all', label: 'All Services' },
+    { id: 'premium', label: 'Premium' },
+    { id: 'marketing', label: 'Marketing' },
+    { id: 'essential', label: 'Essentials' },
+    { id: 'free', label: 'Free' },
   ];
 
   return (
     <div className={`${styles.padding} relative w-full min-h-screen`}>
-      <div className="max-w-7xl mx-auto">
-        <motion.div variants={textVariant()} className="mb-10">
+      {/* Background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[20%] left-[10%] w-48 h-48 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[30%] right-[5%] w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div variants={textVariant()} className="mb-10 text-center">
           <p className={styles.sectionSubText}>What we offer</p>
-          <h2 className={styles.sectionHeadText}>Services.</h2>
+          <h2 className={styles.sectionHeadText}>Our Services</h2>
         </motion.div>
 
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          className="mt-4 text-secondary text-[17px] max-w-3xl mx-auto text-center leading-[30px]"
         >
-          Darun Tech provides a range of services to help businesses establish their online presence
-          and create engaging digital experiences. From custom web development to mobile
-          applications, we ensure high-quality solutions that meet your specific needs.
+          Darun Tech provides a range of packages to help businesses establish their online presence
+          and create engaging digital experiences. From social media marketing to premium exposure,
+          we offer solutions tailored to your specific needs.
         </motion.p>
 
-        <div className="mt-20 flex flex-wrap gap-10 justify-center">
-          {services.map((service, index) => (
-            <ServiceCard 
-              key={service.title} 
-              index={index} 
-              {...service} 
-              onClick={handleServiceClick}
-              isSelected={selectedService === service.id}
-            />
+        {/* Category tabs */}
+        <motion.div 
+          variants={fadeIn("up", "spring", 0.3, 0.75)}
+          className="mt-10 flex justify-center flex-wrap gap-2"
+        >
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveTab(category.id)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeTab === category.id
+                  ? 'bg-[#915EFF] text-white shadow-lg'
+                  : 'bg-tertiary text-secondary hover:text-white'
+              }`}
+            >
+              {category.label}
+            </button>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Service cards */}
+        <motion.div 
+          layout
+          className="mt-16 flex flex-wrap gap-10 justify-center"
+        >
+          {filteredServices.map((service, index) => (
+            <motion.div
+              key={service.id}
+              layout
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ServiceCard 
+                index={index} 
+                {...service} 
+                onClick={handleServiceClick}
+                isSelected={selectedService === service.id}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+        
+        {/* No results message */}
+        {filteredServices.length === 0 && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-16 text-center"
+          >
+            <p className="text-secondary text-lg">No services found in this category.</p>
+          </motion.div>
+        )}
         
         {/* Packages Section - Only visible when a service is selected */}
         {selectedService && showPackages && (
@@ -412,36 +503,59 @@ const Services = () => {
             className="mt-32 mb-20 overflow-hidden"
             key={selectedService} // Key ensures animation reruns when service changes
           >
+            {/* Close button */}
+            <motion.button
+              onClick={() => {
+                setSelectedService(null);
+                setShowPackages(false);
+              }}
+              className="absolute right-4 top-4 bg-tertiary p-2 rounded-full hover:bg-[#915EFF] transition-colors duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </motion.button>
+
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
+              className="relative"
             >
-              <p className={styles.sectionSubText}>Choose your plan for</p>
+              <p className={styles.sectionSubText}>Details for</p>
               <h2 className={styles.sectionHeadText}>
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
+                  className="bg-clip-text text-transparent bg-gradient-to-r from-[#915EFF] to-[#6a3bbd]"
                 >
                   {services.find(s => s.id === selectedService)?.title}
-                </motion.span>{" "}
-                <motion.span 
-                  className="text-[#915EFF]"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                >
-                  Packages
                 </motion.span>
               </h2>
+
+              {/* Service icon */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4, type: "spring" }}
+                className="absolute -top-4 right-4 md:right-20 w-20 h-20 bg-tertiary rounded-full p-4 shadow-xl hidden md:flex items-center justify-center"
+              >
+                <img 
+                  src={services.find(s => s.id === selectedService)?.icon} 
+                  alt="Service icon" 
+                  className="w-12 h-12 object-contain"
+                />
+              </motion.div>
             </motion.div>
             
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
+              className="mt-20 grid grid-cols-1 gap-8"
             >
               {servicePackages[selectedService]?.map((pkg, index) => (
                 <motion.div
@@ -459,6 +573,27 @@ const Services = () => {
                 </motion.div>
               ))}
             </motion.div>
+
+            {/* Back to services button */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="mt-12 text-center"
+            >
+              <button 
+                onClick={() => {
+                  setSelectedService(null);
+                  setShowPackages(false);
+                }}
+                className="inline-flex items-center text-[#915EFF] hover:text-white transition-colors duration-300 group"
+              >
+                <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to all services
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </div>
@@ -466,4 +601,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default Services;

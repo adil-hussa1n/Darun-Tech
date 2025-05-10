@@ -6,51 +6,71 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 // Define packages for different services
 const servicePackages = {
-  'web-dev': [
+  'darun-packages': [
   {
-    name: "Starter",
-    price: "৳15,000",
-    period: "per month",
-    description: "Perfect for small businesses starting their digital journey",
+    name: "Package 1: Social Media Marketing Solution",
+    price: "Varies",
+    period: "based on business needs",
+    description: "Enhance your online presence, engage your audience, and drive results.",
     features: [
-      "Basic Website Design",
-      "5 Social Media Posts",
-      "Basic SEO Setup",
-      "Email Support",
-      "Monthly Analytics Report"
+      "Brainstorming sessions",
+      "Promotional offer development",
+      "Meta (formerly Facebook) ads",
+      "Visual graphics",
+      "Customizable KPIs"
     ],
     popular: false
   },
   {
-    name: "Professional",
-    price: "৳30,000",
+    name: "Package 2: Darun Mega Exposure",
+    price: "৳10,000",
     period: "per month",
-    description: "Ideal for growing businesses looking to expand their online presence",
+    description: "Amplify your brand's visibility with prominent placement on Darun platforms and extensive audience reach.",
     features: [
-      "Custom Website Development",
-      "15 Social Media Posts",
-      "Advanced SEO",
-      "Priority Support",
-      "Weekly Analytics Report",
-      "Content Creation",
-      "Basic Graphic Design"
+      "Prominent placement on Darun platforms",
+      "Extensive audience reach",
+      "৳15,000 taka per month when combined with Package 1"
     ],
     popular: true
   },
   {
-    name: "Enterprise",
-    price: "৳50,000",
+    name: "Package 3: Darun Business Spotlight",
+    price: "৳10,000",
     period: "per month",
-    description: "Comprehensive solution for established businesses",
+    description: "Maximize visibility and engagement with featured presence.",
     features: [
-      "Full Stack Web Development",
-      "Unlimited Social Media Posts",
-      "Premium SEO Services",
-      "24/7 Support",
-      "Daily Analytics Report",
-      "Content Strategy",
-      "Premium Graphic Design",
-      "Review Platform Integration"
+      "Strategic group posts",
+      "Enhanced cashback incentives",
+      "Verified profile",
+      "Customized dashboard",
+      "Push notifications",
+      "Darun boosting"
+    ],
+    popular: false
+  },
+  {
+    name: "Package 4: Darun Business Essentials",
+    price: "৳3,000",
+    period: "per month",
+    description: "Boost your online presence with a verified badge and essential features.",
+    features: [
+      "Verified badge",
+      "Customized dashboard",
+      "Enhanced cashback incentives",
+      "Darun boosting",
+      "Enhanced group posts"
+    ],
+    popular: false
+  },
+  {
+    name: "Package 5: Darun Free Basic Listing",
+    price: "Free",
+    period: "",
+    description: "Start with a foundational presence on Darun.",
+    features: [
+      "Verified individual profile",
+      "Customized dashboard",
+      "No cost"
     ],
     popular: false
   }

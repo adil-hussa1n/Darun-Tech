@@ -108,7 +108,7 @@ const Preloader = () => {
           className="tagline text-white text-sm font-medium mb-8"
           initial={{ y: 20, opacity: 0 }}
         >
-          Bangladesh's #1 Review Sharing Platform
+        Unlock the Power of Reviews with Darun
         </motion.p>
         
         {/* Loading indicator */}

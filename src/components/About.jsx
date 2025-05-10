@@ -63,28 +63,93 @@ const About = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Darun Tech is Bangladesh's leading digital solutions provider, specializing in digital marketing, web development, and graphic design. As the #1 review sharing platform in Bangladesh, we help businesses build trust and credibility through authentic customer reviews.
+          Darun empowers businesses to thrive in the digital age by leveraging shopper reviews and feedback.
         </motion.p>
+        
+        <motion.div
+          variants={fadeIn("", "", 0.2, 1)}
+          className="mt-6"
+        >
+          <h3 className="text-white text-[20px] font-bold">Our Mission</h3>
+          <p className="mt-2 text-secondary text-[17px] max-w-3xl leading-[30px]">
+            To connect everyone with their favorite brands and outlets for the ultimate shopping experience.
+          </p>
+        </motion.div>
+        
+        <motion.div
+          variants={fadeIn("", "", 0.3, 1)}
+          className="mt-6"
+        >
+          <h3 className="text-white text-[20px] font-bold">What We Offer</h3>
+          <ul className="mt-2 text-secondary text-[17px] max-w-3xl leading-[30px] list-disc pl-5 space-y-2">
+            <li>Create individual business profiles to showcase offers, services, and contact details.</li>
+            <li>Collect detailed reviews to build trust and boost your reputation.</li>
+            <li>Get insights through Darun's analytics tools.</li>
+            <li>Manage your presence with a customizable dashboard.</li>
+            <li>Use our marketing services—social media, content, leads, and sales.</li>
+          </ul>
+        </motion.div>
 
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
           <motion.div
             variants={fadeIn("right", "spring", 0.5, 0.75)}
             className="bg-tertiary p-8 rounded-[20px] shadow-card"
           >
-            <h3 className="text-white text-[24px] font-bold mb-4">Our Mission</h3>
-            <p className="text-secondary">
-              To empower businesses with cutting-edge digital solutions that drive growth and success in the digital age. We strive to be the trusted partner for businesses looking to establish and expand their online presence.
-            </p>
+            <h3 className="text-white text-[24px] font-bold mb-4">Why Choose Darun</h3>
+            <ul className="text-secondary space-y-4">
+              <li className="flex items-start">
+                <span className="text-[#915EFF] mr-2">✓</span>
+                <div>
+                  <h4 className="text-white font-bold">Customer-Centric Approach</h4>
+                  <p>We focus on connecting businesses with their target audience, ensuring meaningful interactions.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#915EFF] mr-2">✓</span>
+                <div>
+                  <h4 className="text-white font-bold">Powerful Mobile App Integration</h4>
+                  <p>Our unique app complements our marketing services, providing businesses with a comprehensive solution.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#915EFF] mr-2">✓</span>
+                <div>
+                  <h4 className="text-white font-bold">Verified Profiles</h4>
+                  <p>Build trust and credibility with a verified business profile featuring a blue badge.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#915EFF] mr-2">✓</span>
+                <div>
+                  <h4 className="text-white font-bold">Budget-Friendly Packages</h4>
+                  <p>Scalable options that cater to businesses of all sizes and budgets.</p>
+                </div>
+              </li>
+            </ul>
           </motion.div>
 
           <motion.div
             variants={fadeIn("left", "spring", 0.5, 0.75)}
             className="bg-tertiary p-8 rounded-[20px] shadow-card"
           >
-            <h3 className="text-white text-[24px] font-bold mb-4">Our Vision</h3>
-            <p className="text-secondary">
-              To be the leading digital transformation partner in Bangladesh, helping businesses thrive in the digital economy through innovative solutions and exceptional service.
-            </p>
+            <h3 className="text-white text-[24px] font-bold mb-4">Active Shopper Communities</h3>
+            <p className="text-secondary mb-4">Join Our Communities</p>
+            <ul className="text-secondary space-y-4">
+              <li className="flex items-start">
+                <span className="text-[#915EFF] mr-2">✓</span>
+                <div>
+                  <h4 className="text-white font-bold">Community Reach</h4>
+                  <p>Engage with over 10,000 shoppers who actively seek businesses like yours.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#915EFF] mr-2">✓</span>
+                <div>
+                  <h4 className="text-white font-bold">Growth Benefits</h4>
+                  <p>Grow your network, build loyalty, and collect valuable feedback from engaged community members.</p>
+                </div>
+              </li>
+            </ul>
           </motion.div>
         </div>
 
@@ -93,16 +158,16 @@ const About = () => {
             variants={fadeIn("up", "spring", 0.5, 0.75)}
             className="bg-tertiary p-8 rounded-[20px] shadow-card text-center"
           >
-            <h3 className="text-[#915EFF] text-[48px] font-bold">100+</h3>
-            <p className="text-white text-[20px]">Happy Clients</p>
+            <h3 className="text-[#915EFF] text-[48px] font-bold">10,000+</h3>
+            <p className="text-white text-[20px]">Active Community Members</p>
           </motion.div>
 
           <motion.div
             variants={fadeIn("up", "spring", 0.75, 0.75)}
             className="bg-tertiary p-8 rounded-[20px] shadow-card text-center"
           >
-            <h3 className="text-[#915EFF] text-[48px] font-bold">500+</h3>
-            <p className="text-white text-[20px]">Projects Completed</p>
+            <h3 className="text-[#915EFF] text-[48px] font-bold">Verified</h3>
+            <p className="text-white text-[20px]">Business Profiles</p>
           </motion.div>
 
           <motion.div
