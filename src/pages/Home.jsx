@@ -1,6 +1,6 @@
 import Hero from '../components/Hero';
 import About from '../components/About';
-import Services from '../components/Services';
+import ServicesNew from '../components/Services.new';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import FAQ from '../components/FAQ';
@@ -14,8 +14,10 @@ const Home = () => {
       </div>
       <div className="relative">
         <About />
+        <div id="services">
+          <ServicesNew />
+        </div>
         <Team />
-        <Services />
         <FAQ />
         <Testimonials />
         <Contact />

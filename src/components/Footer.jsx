@@ -139,7 +139,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <span className="font-medium text-white block mb-1">Address</span>
-                  <span className="text-secondary text-sm">123 Business Street, Dhaka, Bangladesh</span>
+                  <span className="text-secondary text-sm">Kazitula Road, Sylhet, Bangladesh</span>
                 </div>
               </li>
               <li className="flex items-start">
@@ -149,7 +149,7 @@ const Footer = () => {
                 <div>
                   <span className="font-medium text-white block mb-1">Phone</span>
                   <a href="tel:+8801234567890" className="text-secondary text-sm hover:text-[#915EFF] transition-colors">
-                    +880 1234 567890
+                    +880 1831 877987
                   </a>
                 </div>
               </li>
@@ -160,7 +160,7 @@ const Footer = () => {
                 <div>
                   <span className="font-medium text-white block mb-1">Email</span>
                   <a href="mailto:info@daruntech.com" className="text-secondary text-sm hover:text-[#915EFF] transition-colors">
-                    info@daruntech.com
+                    daruntech.pvt.ltd@gmail.com
                   </a>
                 </div>
               </li>

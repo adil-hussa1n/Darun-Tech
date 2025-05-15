@@ -232,7 +232,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold">Address</h4>
-                    <p className="text-secondary">123 Business Street, Dhaka, Bangladesh</p>
+                    <p className="text-secondary">Kazitula Road, Sylhet, Bangladesh</p>
                     <a 
                       href="https://maps.google.com/?q=Dhaka,Bangladesh" 
                       target="_blank" 
@@ -254,9 +254,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold">Phone</h4>
-                    <p className="text-secondary">+880 1234-567890</p>
+                    <p className="text-secondary">+880 1831 877987</p>
                     <a 
-                      href="tel:+8801234567890" 
+                      href="tel:+8801831877987" 
                       className="text-[#915EFF] text-sm hover:text-white transition-colors mt-1 inline-block"
                     >
                       Call now
@@ -274,9 +274,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold">Email</h4>
-                    <p className="text-secondary">contact@daruntech.com</p>
+                    <p className="text-secondary">daruntechpvtltd@gmail.com</p>
                     <a 
-                      href="mailto:contact@daruntech.com" 
+                      href="mailto:daruntechpvtltd@gmail.com" 
                       className="text-[#915EFF] text-sm hover:text-white transition-colors mt-1 inline-block"
                     >
                       Send email
@@ -294,9 +294,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold">Business Hours</h4>
-                    <p className="text-secondary">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-secondary">Saturday: 10:00 AM - 4:00 PM</p>
-                    <p className="text-secondary">Sunday: Closed</p>
+                    <p className="text-secondary">Saturday - Thursday: 24 Hours</p>
+                    <p className="text-secondary">Friday: Closed</p>
                   </div>
                 </motion.div>
               </div>
