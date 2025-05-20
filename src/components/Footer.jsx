@@ -56,7 +56,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-secondary hover:text-white transition-colors flex items-center group">
+                <Link to="/hero" className="text-secondary hover:text-white transition-colors flex items-center group">
                   <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                   Home
                 </Link>
@@ -71,12 +71,6 @@ const Footer = () => {
                 <Link to="/services" className="text-secondary hover:text-white transition-colors flex items-center group">
                   <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                   Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/packages" className="text-secondary hover:text-white transition-colors flex items-center group">
-                  <span className="w-0 h-[1px] bg-[#915EFF] mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
-                  Packages
                 </Link>
               </li>
               <li>

@@ -4,10 +4,15 @@ import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+
+
+const Hero = lazy(() => import('./components/Hero'));
+
+
 const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
-const Services = lazy(() => import('./pages/Services'));
-const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./components/About'));
+const Services = lazy(() => import('./components/Services.new'));
+const Contact = lazy(() => import('./components/Contact'));
 
 // Packages are now integrated directly into the Services component
 
@@ -38,6 +43,7 @@ const App = () => {
             }>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/hero" element={<Hero />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/contact" element={<Contact />} />
