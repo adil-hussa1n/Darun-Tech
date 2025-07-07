@@ -9,7 +9,7 @@ const leadershipTeam = [
     name: "Abdun Noor",
     role: "Chairman",
     bio: "Visionary leader guiding Darun Tech's strategic direction and growth initiatives.",
-    image: "https://randomuser.me/api/portraits/men/1.jpg",
+    image: "https://www.gailkennyrecruitment.com/wp-content/uploads/2015/03/blank-male.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -20,7 +20,7 @@ const leadershipTeam = [
     name: "Mishfaqur Rahman",
     role: "Founder & CEO",
     bio: "Innovative entrepreneur with a passion for connecting businesses and customers through technology.",
-    image: "https://randomuser.me/api/portraits/men/2.jpg",
+    image: "https://www.gailkennyrecruitment.com/wp-content/uploads/2015/03/blank-male.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -31,7 +31,7 @@ const leadershipTeam = [
     name: "Abdullah Sherazi",
     role: "Director",
     bio: "Strategic leader overseeing business operations and driving organizational excellence.",
-    image: "https://randomuser.me/api/portraits/men/3.jpg",
+    image: "https://www.gailkennyrecruitment.com/wp-content/uploads/2015/03/blank-male.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -42,7 +42,7 @@ const leadershipTeam = [
     name: "Asifur Rahman",
     role: "Director",
     bio: "Business development expert focused on expanding Darun Tech's market presence and partnerships.",
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
+    image: "https://scontent.fdac178-1.fna.fbcdn.net/v/t39.30808-6/487482582_3083383841838236_3354529306399594123_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=mvanJR2q1cMQ7kNvwESuvms&_nc_oc=Adm7sTD6ZhvnB93WvqE7BibKO26nXq701MOVn-JRcVIRlWtnynUMnUvB-U8-2Ys7-8w&_nc_zt=23&_nc_ht=scontent.fdac178-1.fna&_nc_gid=sXPHykJNbOgCkiIJ_lOACw&oh=00_AfQdLy_V8RNi1N-H38q3BO0w8lTgKRE7mImU3FBqBkGqsw&oe=6871D0A6",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -53,7 +53,7 @@ const leadershipTeam = [
     name: "Muhammad Shofikul Alom",
     role: "Director",
     bio: "Financial strategist ensuring sustainable growth and investment in innovative solutions.",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+    image: "https://www.gailkennyrecruitment.com/wp-content/uploads/2015/03/blank-male.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -64,7 +64,7 @@ const leadershipTeam = [
     name: "Halima Tus Sadia",
     role: "Director",
     bio: "Marketing visionary developing brand strategies and customer engagement initiatives.",
-    image: "https://randomuser.me/api/portraits/women/1.jpg",
+    image: "https://www.nicepng.com/png/detail/52-521023_download-free-icon-female-vectors-blank-facebook-profile.png",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -77,9 +77,9 @@ const leadershipTeam = [
 const coreTeam = [
   {
     name: "Adil Hussain",
-    role: "Backend Developer",
+    role: "Full Stack Developer",
     bio: "Experienced developer building robust and scalable backend systems for Darun Tech's platform.",
-    image: "https://randomuser.me/api/portraits/men/7.jpg",
+    image: "https://scontent.fdac178-1.fna.fbcdn.net/v/t39.30808-6/504489574_3101279313369643_1419583961276568422_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFFaojqy1XjAOwSD40lJB1w1VtlNtJLZTzVW2U20ktlPLXyBmpMPp91MLB1ZR65LSjEjTXkUYZ4rEsAzsYBny3C&_nc_ohc=0kS864tEADgQ7kNvwGCeAaq&_nc_oc=AdkSy4bhYbJz1yubtKmd-KBrpRkGjLW_S2Vgq3vyM9SdgURQ2JWp4IcIY-tc-uT3OjA&_nc_zt=23&_nc_ht=scontent.fdac178-1.fna&_nc_gid=dLS-YbF6Yel2J6kSNoYeVA&oh=00_AfRMiYtlLA9gTdtWScS9brAXjL46LSbkzksNtVIBtJO0bg&oe=6871B3AF",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -88,9 +88,9 @@ const coreTeam = [
   },
   {
     name: "Promit Bhattacharjee",
-    role: "Frontend Developer",
+    role: "Full Stack Developer",
     bio: "UI/UX specialist creating intuitive and engaging user experiences across all Darun platforms.",
-    image: "https://randomuser.me/api/portraits/men/8.jpg",
+    image: "https://scontent.fdac178-1.fna.fbcdn.net/v/t39.30808-6/473758056_601135722617141_3324053033865779919_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeH7hogVwmOyU583fuIg8Y-N45OcnJogWhXjk5ycmiBaFZn1LbXorpME6xJKXG-WU5ugLhexK-9fwmNRZ52Dh-BE&_nc_ohc=HeuQjzNPjP8Q7kNvwEuO1Qk&_nc_oc=AdlRzlh-PvNwY2l69gg8ya3r-IFd3QuBg1Mm93zZ8unpWf7QYq7fUyIgwVajO5xJGVY&_nc_zt=23&_nc_ht=scontent.fdac178-1.fna&_nc_gid=KXgzgtMOSixhDIe31aRoYg&oh=00_AfTVIGRscLyOeQXvZqBcScKqgcfCaUqVQuMEuPd-hYcb2g&oe=6871C213",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -101,7 +101,7 @@ const coreTeam = [
     name: "Rafid Al Raiyan",
     role: "Motion Graphics Designer & Content Writer",
     bio: "Creative professional crafting compelling visual stories and engaging written content.",
-    image: "https://randomuser.me/api/portraits/men/9.jpg",
+    image: "https://scontent.fdac178-1.fna.fbcdn.net/v/t39.30808-6/507060553_4155691477983135_2098855734387318644_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHksXcaQM2puQ-xf9m1HhhshZS-q6SD6z2FlL6rpIPrPTL1KkG8QvMyzaZcUvwL4VK_4KPcYsVn0p-UoRE74GaI&_nc_ohc=36OcMPu8Tg4Q7kNvwEsOLtK&_nc_oc=Adm-tnSRXewcplm7KRMHgoCg4v6Q-68Wkzc5JCSFp79Jt9KB4z75ZVD4dF-5PW5xfc4&_nc_zt=23&_nc_ht=scontent.fdac178-1.fna&_nc_gid=phveCkO1DBzhYbTYdr0mig&oh=00_AfRtyNUgvqzfR77ZHgdR4fZjKgtNkJz94n7GOFV2yiTu4A&oe=6871E890",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -112,7 +112,7 @@ const coreTeam = [
     name: "Md Mohi Uddin",
     role: "Lead Designer",
     bio: "Design leader overseeing all visual aspects of Darun Tech's brand and digital presence.",
-    image: "https://randomuser.me/api/portraits/men/10.jpg",
+    image: "https://scontent.fdac178-1.fna.fbcdn.net/v/t39.30808-6/487483580_4853750158183336_5743425212854916470_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF1vx2PK6jBwicivL6l0MzkT59DgIX3MitPn0OAhfcyKzD1zIl8NUps3DDw4dpGLSwKX81vW_JvvSgdoYDsdeAc&_nc_ohc=YUsqSB7Yoo0Q7kNvwEWgLOy&_nc_oc=AdlYcucuxS5CW_fwWEBcVH6QE387lJ3-Vp68Kq26Pz4yaKqGOROn29rE3JK3BsfhOp8&_nc_zt=23&_nc_ht=scontent.fdac178-1.fna&_nc_gid=U7di6zGktzSeB23gF3tpSw&oh=00_AfRPtC71SFhwcWAxBtzgsxaSAQShtrfO_Af4N-xTWdaLDg&oe=6871E737",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -123,7 +123,7 @@ const coreTeam = [
     name: "Labah Sunnah Rahman",
     role: "Designer",
     bio: "Creative designer developing visual assets that enhance user experience and brand identity.",
-    image: "https://randomuser.me/api/portraits/women/2.jpg",
+    image: "https://scontent.fdac178-1.fna.fbcdn.net/v/t39.30808-6/473541429_601135859283794_8886093732019231998_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFcvyFQ38af9vmCHwi_php8hcndTx7uYWyFyd1PHu5hbJvzVcbhmGW5mWTWldMJmPLhExO-dndbMKhqPuohpaQC&_nc_ohc=_bJQ7wH-vkcQ7kNvwHhvmnW&_nc_oc=AdkmK8L2Z4QIiv4J2rQdLqSYtmsjzvrKXr_uDFM0VOoVF9dSgFFwjboyTt-GeAMpOp0&_nc_zt=23&_nc_ht=scontent.fdac178-1.fna&_nc_gid=DksFWQmX3VeqH4lfshP62w&oh=00_AfS_JVIwbEdG_ERaFMP7qCOpN_ifg_Otx6ypupmDbOr1Bg&oe=6871BEE8",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -134,7 +134,7 @@ const coreTeam = [
     name: "Proma Shueb",
     role: "Designer",
     bio: "Innovative designer creating visual solutions that communicate Darun Tech's mission and values.",
-    image: "https://randomuser.me/api/portraits/women/3.jpg",
+    image: "https://www.nicepng.com/png/detail/52-521023_download-free-icon-female-vectors-blank-facebook-profile.png",
     social: {
       linkedin: "#",
       twitter: "#",
