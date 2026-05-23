@@ -1,140 +1,157 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { styles } from '../styles';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { logo } from '../assets';
 
 const Preloader = () => {
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
-    // Create a timeline for the animation sequence
+    // Progress counter animation
+    const duration = 2200; // ms
+    const intervalTime = 30; // ms
+    const steps = duration / intervalTime;
+    let step = 0;
+
+    const timer = setInterval(() => {
+      step++;
+      const nextProgress = Math.min(Math.round((step / steps) * 100), 100);
+      setProgress(nextProgress);
+      if (nextProgress >= 100) {
+        clearInterval(timer);
+      }
+    }, intervalTime);
+
+    // GSAP animations for letters
     const tl = gsap.timeline();
+    tl.set({}, {}, 0.2); // initial delay
     
-    // Add a shorter delay before starting animations
-    tl.set({}, {}, 0.3); // 0.3 second initial delay
-    
-    // Animate the logo elements
     tl.to('.logo-letter', {
       y: 0,
       opacity: 1,
-      stagger: 0.1, // Faster stagger time between letters
-      duration: 0.5, // Faster duration
-      ease: 'back.out(1.7)' // More dynamic easing
+      stagger: 0.08,
+      duration: 0.4,
+      ease: 'back.out(1.5)'
     });
     
-    // Add a brief pause to appreciate the logo
-    tl.set({}, {}, 0.5); // 0.5 second pause
-    
-    // Animate the tagline
     tl.to('.tagline', {
-      opacity: 1,
+      opacity: 0.9,
       y: 0,
-      duration: 0.5, // Faster duration
+      duration: 0.4,
       ease: 'power2.out'
-    });
+    }, "-=0.1");
 
-    // Animate the background elements
-    tl.to('.bg-element', {
-      scale: 1.2,
-      opacity: 0.3,
-      duration: 2,
-      ease: 'power1.inOut',
-      repeat: 1,
-      yoyo: true
-    }, "-=1");
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }} // Keep visible until App.jsx removes it
-      className="fixed inset-0 z-50 flex items-center justify-center bg-primary overflow-hidden"
-    >
-      <div className="flex flex-col items-center relative">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <div className="bg-element absolute top-10 left-10 w-32 h-32 bg-[#915EFF] rounded-full opacity-20 blur-xl"></div>
-          <div className="bg-element absolute bottom-10 right-10 w-40 h-40 bg-[#915EFF] rounded-full opacity-15 blur-xl"></div>
-          <div className="bg-element absolute top-1/2 left-1/4 w-24 h-24 bg-blue-500 rounded-full opacity-10 blur-xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black to-transparent opacity-40"></div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050816] overflow-hidden">
+      {/* Background blurs */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.15, 0.25, 0.15]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-10 left-10 w-64 h-64 bg-[#915EFF] rounded-full blur-[100px]"
+        />
+        <motion.div 
+          animate={{
+            scale: [1.1, 1, 1.1],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-10 right-10 w-80 h-80 bg-blue-500 rounded-full blur-[120px]"
+        />
+      </div>
+      
+      {/* Central Glassmorphic Loading Card */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="glassmorphism p-8 md:p-12 rounded-[32px] max-w-[420px] w-[90%] flex flex-col items-center border border-white/10 shadow-2xl relative z-10 glow-shadow-purple"
+      >
+        {/* Animated logo wrapper with glowing spinner */}
+        <div className="relative mb-6">
+          {/* Glowing ring */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-2.5 rounded-full border border-dashed border-[#915EFF]/40"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-4 rounded-full border border-double border-blue-500/20"
+          />
+          
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            className="relative w-24 h-24 rounded-full bg-[#151030] flex items-center justify-center p-2 border border-white/10"
+          >
+            <img src={logo} alt="Darun Tech Logo" className="w-full h-full object-contain rounded-full" />
+          </motion.div>
         </div>
         
-        {/* Logo image */}
-        <motion.div
-          initial={{ y: 20, opacity: 0, scale: 0.8 }}
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="mb-6 relative z-10"
-        >
-          <motion.div
-            animate={{ 
-              boxShadow: ["0 0 0 rgba(145, 94, 255, 0)", "0 0 20px rgba(145, 94, 255, 0.5)", "0 0 0 rgba(145, 94, 255, 0)"]
-            }}
-            transition={{ 
-              duration: 2, 
-              repeat: Infinity, 
-              repeatType: "loop" 
-            }}
-            className="rounded-full p-2"
-          >
-            <img src={logo} alt="Darun Tech Logo" className="w-32 h-32 object-contain" />
-          </motion.div>
-        </motion.div>
-        
-        {/* Logo text animation */}
-        <div className="flex items-center justify-center mb-4 relative z-10">
+        {/* Logo text letters stack */}
+        <div className="flex items-center justify-center mb-3">
           <div className="flex">
             {['D', 'A', 'R', 'U', 'N'].map((letter, index) => (
-              <motion.span 
+              <span 
                 key={index}
-                className="logo-letter text-3xl font-bold text-white mx-1"
-                initial={{ y: 50, opacity: 0 }}
-                style={{ display: 'inline-block' }}
+                className="logo-letter text-2xl font-black text-white mx-0.5"
+                style={{ display: 'inline-block', transform: 'translateY(25px)', opacity: 0 }}
               >
                 {letter}
-              </motion.span>
+              </span>
             ))}
-            <motion.span 
-              className="logo-letter text-3xl font-bold text-[#915EFF] mx-1"
-              initial={{ y: 50, opacity: 0 }}
-              style={{ display: 'inline-block' }}
+            <span 
+              className="logo-letter text-2xl font-black text-[#915EFF] mx-0.5"
+              style={{ display: 'inline-block', transform: 'translateY(25px)', opacity: 0 }}
             >
               TECH
-            </motion.span>
+            </span>
           </div>
         </div>
         
         {/* Tagline */}
-        <motion.p
-          className="tagline text-white text-sm font-medium mb-8"
-          initial={{ y: 20, opacity: 0 }}
+        <p
+          className="tagline text-gray-400 text-xs font-semibold uppercase tracking-widest text-center max-w-[280px]"
+          style={{ transform: 'translateY(10px)', opacity: 0 }}
         >
-        Unlock the Power of Reviews with Darun
-        </motion.p>
+          Unlock the Power of Reviews
+        </p>
         
-        {/* Loading indicator */}
-        <div className="relative w-48 h-3 bg-gray-700 rounded-full overflow-hidden mt-6">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: '100%' }}
-            transition={{ 
-              duration: 3.5,
-              ease: "easeInOut"
-            }}
-            className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#915EFF] to-blue-500 rounded-full"
-          />
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.7, 0] }}
-            transition={{ duration: 1.5, repeat: 2, repeatType: "loop" }}
-            className="absolute top-0 left-0 h-full w-20 bg-white opacity-30 blur-sm rounded-full"
-            style={{ 
-              backgroundImage: "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)",
-              animation: "shimmer 1.5s infinite"
-            }}
-          />
+        {/* Progress Bar and Indicator */}
+        <div className="w-full mt-8">
+          <div className="flex justify-between items-center text-xs font-bold text-gray-400 mb-2 px-1">
+            <span className="uppercase tracking-wider">Loading Assets</span>
+            <span className="text-[#915EFF]">{progress}%</span>
+          </div>
+          
+          <div className="relative w-full h-2 bg-[#050816]/80 rounded-full overflow-hidden border border-white/5">
+            <motion.div
+              className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#915EFF] to-blue-500 rounded-full"
+              style={{ width: `${progress}%` }}
+              layout
+            />
+            {/* Shimmer light effect */}
+            <motion.div 
+              animate={{ x: ['-100%', '300%'] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            />
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

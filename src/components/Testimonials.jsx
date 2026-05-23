@@ -1,89 +1,80 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { fadeIn, textVariant } from '../utils/motion';
+import { testimonials } from '../constants';
+import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 
 const FeedbackCard = ({ index, testimonial, name, designation, company, image }) => (
   <motion.div
-    variants={fadeIn("", "spring", index * 0.5, 0.75)}
-    className="bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full"
+    variants={fadeIn("up", "spring", index * 0.15, 0.75)}
+    className="bg-[#151030]/60 backdrop-blur-md p-8 rounded-3xl border border-white/5 shadow-xl hover:border-[#915EFF]/25 hover:shadow-[#915EFF]/10 hover:scale-[1.02] transition-all duration-300 xs:w-[360px] w-full flex flex-col justify-between relative overflow-hidden group"
   >
-    <div className="mt-1">
-      <p className="text-white font-black text-[48px]">"</p>
-      <p className="text-white tracking-wider text-[18px]">{testimonial}</p>
+    {/* Floating quote background */}
+    <div className="absolute top-4 right-4 text-[#915EFF]/10 group-hover:text-[#915EFF]/20 transition-colors">
+      <FaQuoteLeft size={44} />
     </div>
 
-    <div className="mt-7 flex justify-between items-center gap-1">
-      <div className="flex-1 flex flex-col">
-        <p className="text-white font-medium text-[16px]">
-          <span className="blue-text-gradient">@</span> {name}
-        </p>
-        <p className="mt-1 text-secondary text-[12px]">
-          {designation} of {company}
-        </p>
+    <div>
+      {/* Stars ratings */}
+      <div className="flex gap-1 text-yellow-400 mb-5 relative z-10">
+        <FaStar className="star-glow text-xs" />
+        <FaStar className="star-glow text-xs" />
+        <FaStar className="star-glow text-xs" />
+        <FaStar className="star-glow text-xs" />
+        <FaStar className="star-glow text-xs" />
       </div>
 
-      <img
-        src={image}
-        alt={`feedback_by-${name}`}
-        className="w-10 h-10 rounded-full object-cover"
-      />
+      <p className="text-gray-200 tracking-wide text-[14px] leading-relaxed relative z-10 italic mb-6">
+        "{testimonial}"
+      </p>
+    </div>
+
+    <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
+      <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 flex-shrink-0">
+        <img
+          src={image}
+          alt={`feedback_by-${name}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
+      <div className="flex-1 min-w-0">
+        <h4 className="text-white font-bold text-[15px] truncate">
+          {name}
+        </h4>
+        <p className="text-gray-400 text-[11px] font-semibold mt-0.5 truncate uppercase tracking-wider">
+          {designation} @ <span className="text-[#915EFF]">{company}</span>
+        </p>
+      </div>
     </div>
   </motion.div>
 );
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      testimonial:
-        "Working with Huzaif was an absolute pleasure. His attention to detail and technical expertise helped us create a stunning website that perfectly represents our brand.",
-      name: "Sarah Johnson",
-      designation: "CEO",
-      company: "TechStart",
-      image: "https://randomuser.me/api/portraits/women/1.jpg",
-    },
-    {
-      testimonial:
-        "Huzaif's development skills are exceptional. He delivered our project on time and exceeded our expectations with his innovative solutions.",
-      name: "Michael Chen",
-      designation: "CTO",
-      company: "InnovateX",
-      image: "https://randomuser.me/api/portraits/men/1.jpg",
-    },
-    {
-      testimonial:
-        "The mobile app developed by Huzaif has significantly improved our customer engagement. His understanding of user experience is remarkable.",
-      name: "Lisa Wang",
-      designation: "Product Manager",
-      company: "MobileFirst",
-      image: "https://randomuser.me/api/portraits/women/2.jpg",
-    },
-  ];
-
   return (
-    <div className={`${styles.padding} relative w-full min-h-screen`}>
+    <div className={`${styles.padding} relative w-full min-h-screen bg-gradient-to-b from-[#050816] to-[#100d25]`}>
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={textVariant()} className="mb-10">
+        
+        {/* Header */}
+        <motion.div variants={textVariant()} className="mb-10 text-center">
           <p className={styles.sectionSubText}>What others say</p>
           <h2 className={styles.sectionHeadText}>Testimonials.</h2>
+          <p className="mt-4 text-gray-300 text-[16px] sm:text-[18px] max-w-2xl mx-auto leading-relaxed">
+            Real feedback from merchants and business owners who have scaled their presence using the Darun Tech framework.
+          </p>
         </motion.div>
 
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        >
-          Here are some testimonials from clients I've worked with. Their feedback
-          reflects my commitment to delivering high-quality solutions and exceptional
-          service.
-        </motion.p>
-
-        <div className="mt-20 flex flex-wrap gap-10 justify-center">
+        {/* Testimonials list */}
+        <div className="mt-16 flex flex-wrap gap-8 justify-center">
           {testimonials.map((testimonial, index) => (
             <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
           ))}
         </div>
+        
       </div>
     </div>
   );
 };
 
-export default Testimonials; 
+export default Testimonials;

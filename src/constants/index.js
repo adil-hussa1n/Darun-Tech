@@ -59,19 +59,19 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Full-Stack Developer",
+    title: "Verified Business Profiles",
     icon: web,
   },
   {
-    title: "Frontend Developer",
+    title: "Verified Trust Badges",
     icon: mobile,
   },
   {
-    title: "Backend Developer",
+    title: "Reputation Analytics",
     icon: backend,
   },
   {
-    title: "Ui UX Designer",
+    title: "Marketing & Promotion",
     icon: creator,
   },
 ];
@@ -171,23 +171,23 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Huzaif proved me wrong.",
+      "Darun Tech's platform completely transformed how we receive customer feedback. Our verified blue-badge profile has built immense trust with shoppers in Dhaka.",
     name: "MD Mustaqeem",
-    designation: "Ecommerce",
+    designation: "Head of Operations",
     company: "QuickMart",
     image: firstTestimonial,
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Huzaif does.",
+      "Collecting verified reviews via Darun helped us identify customer pain points and improve our delivery times. The active shopper community is incredibly supportive.",
     name: "Abdul Raheman",
-    designation: "Ecommerce Business",
+    designation: "Founder",
     company: "justbuyz",
     image: secondTestimonial,
   },
   {
     testimonial:
-      "After Huzaif optimized our website, our traffic increased by 50%. We can't thank them enough!",
+      "After listing on Darun Tech and utilizing their Mega Exposure package, our customer traffic and reviews surged by 50% within a single month. Simply phenomenal!",
     name: "James Wang",
     designation: "CTO",
     company: "456 Enterprises",
