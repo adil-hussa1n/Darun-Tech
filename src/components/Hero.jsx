@@ -107,7 +107,11 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   const particles = useMemo(() => {
+    // Skip particles on mobile — 25 concurrent animations tank performance
+    if (isMobile) return [];
     return Array.from({ length: 25 }).map((_, index) => ({
       id: index,
       size: Math.random() * 3 + 1.5,

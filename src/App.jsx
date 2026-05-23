@@ -11,15 +11,14 @@ const App = () => {
   const [renderPreloader, setRenderPreloader] = useState(true);
 
   useEffect(() => {
-    // Set a shorter timeout for the preloader to improve user experience
+    // Short preloader — just long enough for the animation, then get out of the way
     const timer = setTimeout(() => {
       setLoading(false);
-      // Completely unmount preloader contents 500ms after fade-out completes
       const unmountTimer = setTimeout(() => {
         setRenderPreloader(false);
-      }, 500);
+      }, 400);
       return () => clearTimeout(unmountTimer);
-    }, 1500); // Reduced to 1500ms for faster parallel load completion
+    }, 800);
     
     return () => clearTimeout(timer);
   }, []);
