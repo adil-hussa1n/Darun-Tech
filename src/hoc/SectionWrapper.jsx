@@ -1,16 +1,14 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { styles } from "../styles";
 import { staggerContainer } from "../utils/motion";
 
 const StarWrapper = (Component, idName) =>
   function HOC() {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-      setIsMobile(window.innerWidth < 768);
-    }, []);
+    const [isMobile] = useState(() =>
+      typeof window !== 'undefined' && window.innerWidth < 768
+    );
 
     return (
       <motion.section

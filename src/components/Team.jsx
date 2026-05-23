@@ -101,10 +101,9 @@ const coreTeam = [
 ];
 
 const TeamMemberCard = ({ member, index, isLeadership }) => {
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  const [isMobile] = React.useState(() =>
+    typeof window !== 'undefined' && window.innerWidth < 768
+  );
 
   return (
     <motion.div
@@ -174,10 +173,9 @@ const TeamMemberCard = ({ member, index, isLeadership }) => {
 };
 
 const Team = () => {
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  const [isMobile] = React.useState(() =>
+    typeof window !== 'undefined' && window.innerWidth < 768
+  );
 
   return (
     <section className={`${styles.padding} relative z-0`} id="team">

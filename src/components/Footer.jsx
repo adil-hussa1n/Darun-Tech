@@ -7,10 +7,9 @@ import logo from '../assets/logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  const [isMobile] = React.useState(() =>
+    typeof window !== 'undefined' && window.innerWidth < 768
+  );
 
   return (
     <footer className="relative w-full mx-auto bg-gradient-to-b from-[#151030] to-[#050816] py-16 overflow-hidden border-t border-white/5">
