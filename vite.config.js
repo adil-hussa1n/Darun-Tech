@@ -10,13 +10,11 @@ export default defineConfig({
         manualChunks: {
           // Core React — critical path, must be small
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          // Framer Motion — large, but loads in parallel with react
+          // Framer Motion — large, loads in parallel with react
           'vendor-motion': ['framer-motion'],
-          // GSAP — only needed for About + Preloader
-          'vendor-gsap': ['gsap'],
-          // Icons — large icon library
+          // Icons — load in parallel
           'vendor-icons': ['react-icons'],
-          // Email — only needed for Contact form
+          // Email — only needed when Contact form is used
           'vendor-email': ['@emailjs/browser'],
         }
       }

@@ -1,26 +1,21 @@
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
-import { Tilt } from 'react-tilt';
 import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
 import { useState } from 'react';
 import { FaCheckCircle, FaCheck, FaInfoCircle, FaChevronRight } from 'react-icons/fa';
 
 const ServiceCard = ({ index, title, icon, id, description, onClick, isSelected }) => {
   return (
-    <Tilt 
-      className="xs:w-[320px] w-full"
-      options={{
-        max: 15,
-        scale: 1.03,
-        speed: 400,
-      }}
+    <motion.div
+      variants={fadeIn("up", "spring", index * 0.15, 0.75)}
+      className={`xs:w-[320px] w-full`}
+      whileHover={{ y: -6, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <motion.div
-        variants={fadeIn("up", "spring", index * 0.15, 0.75)}
+      <div
         className={`w-full ${isSelected ? 'gradient-border-card bg-[#1e1945]' : 'glassmorphism hover:border-[#915EFF]/30'} p-[1px] rounded-[24px] shadow-xl transition-all duration-300`}
-        whileHover={{ y: -6, boxShadow: "0 15px 35px rgba(145, 94, 255, 0.15)" }}
       >
-        <div 
+        <div
           className={`bg-[#151030]/95 rounded-[24px] p-6 min-h-[300px] flex justify-between flex-col cursor-pointer transition-all duration-300 ${isSelected ? 'bg-[#1b1544]' : ''}`}
           onClick={() => onClick(id, title)}
         >
@@ -32,7 +27,7 @@ const ServiceCard = ({ index, title, icon, id, description, onClick, isSelected 
                 className="w-12 h-12 object-contain"
               />
             </div>
-            
+
             <h3 className="text-white text-[18px] font-bold tracking-tight mb-2">
               {title}
             </h3>
@@ -40,10 +35,10 @@ const ServiceCard = ({ index, title, icon, id, description, onClick, isSelected 
               {description}
             </p>
           </div>
-          
+
           <div className="mt-6 flex justify-center w-full">
             {isSelected ? (
-              <motion.div 
+              <motion.div
                 layoutId="btn-details"
                 className="bg-gradient-to-r from-[#915EFF] to-blue-500 text-white text-xs font-bold py-2 px-5 rounded-full flex items-center gap-1.5 shadow-md shadow-[#915EFF]/20"
               >
@@ -56,8 +51,8 @@ const ServiceCard = ({ index, title, icon, id, description, onClick, isSelected 
             )}
           </div>
         </div>
-      </motion.div>
-    </Tilt>
+      </div>
+    </motion.div>
   );
 };
 
