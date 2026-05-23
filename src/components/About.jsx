@@ -94,7 +94,7 @@ const About = () => {
           {/* Why Choose Us */}
           <motion.div
             variants={fadeIn("right", "spring", 0.3, 0.75)}
-            className="glassmorphism p-8 rounded-[20px] border border-white/5 glow-shadow-purple relative overflow-hidden group"
+            className="glassmorphism p-6 sm:p-8 rounded-[20px] border border-white/5 glow-shadow-purple relative overflow-hidden group"
           >
             <div className="absolute -right-10 -top-10 w-24 h-24 rounded-full bg-[#915EFF]/5 group-hover:bg-[#915EFF]/10 transition-all duration-300" />
             <h3 className="text-white text-[22px] font-bold mb-6 flex items-center gap-2">
@@ -109,7 +109,7 @@ const About = () => {
                 { title: "Budget-Friendly Scalable Packages", desc: "Adaptable structures that cater perfectly to local startups as well as established national brands." }
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <span className="text-[#915EFF] text-base font-extrabold mt-0.5">✓</span>
+                   <span className="text-[#915EFF] text-base font-extrabold mt-0.5">✓</span>
                   <div>
                     <h4 className="text-white font-bold text-[15px]">{item.title}</h4>
                     <p className="text-gray-400 text-xs mt-1 leading-relaxed">{item.desc}</p>
@@ -118,11 +118,11 @@ const About = () => {
               ))}
             </ul>
           </motion.div>
-
+ 
           {/* Active Shopper Communities */}
           <motion.div
             variants={fadeIn("left", "spring", 0.3, 0.75)}
-            className="glassmorphism p-8 rounded-[20px] border border-white/5 glow-shadow-purple relative overflow-hidden group flex flex-col justify-between"
+            className="glassmorphism p-6 sm:p-8 rounded-[20px] border border-white/5 glow-shadow-purple relative overflow-hidden group flex flex-col justify-between"
           >
             <div className="absolute -left-10 -bottom-10 w-24 h-24 rounded-full bg-blue-500/5 group-hover:bg-blue-500/10 transition-all duration-300" />
             

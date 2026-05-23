@@ -8,7 +8,7 @@ import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 const FeedbackCard = ({ index, testimonial, name, designation, company, image }) => (
   <motion.div
     variants={fadeIn("up", "spring", index * 0.15, 0.75)}
-    className="bg-[#151030]/60 backdrop-blur-md p-8 rounded-3xl border border-white/5 shadow-xl hover:border-[#915EFF]/25 hover:shadow-[#915EFF]/10 hover:scale-[1.02] transition-all duration-300 xs:w-[360px] w-full flex flex-col justify-between relative overflow-hidden group"
+    className="bg-[#151030]/60 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/5 shadow-xl hover:border-[#915EFF]/25 hover:shadow-[#915EFF]/10 hover:scale-[1.02] transition-all duration-300 xs:w-[360px] w-full flex flex-col justify-between relative overflow-hidden group"
   >
     {/* Floating quote background */}
     <div className="absolute top-4 right-4 text-[#915EFF]/10 group-hover:text-[#915EFF]/20 transition-colors">

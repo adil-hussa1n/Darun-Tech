@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { styles } from "../styles";
 import { FaUserCheck, FaStar, FaUsers, FaArrowRight, FaChevronDown, FaCheckCircle, FaQuoteLeft } from 'react-icons/fa';
@@ -103,14 +103,16 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const particles = Array.from({ length: 25 }).map((_, index) => ({
-    id: index,
-    size: Math.random() * 3 + 1.5,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 15 + 10,
-    delay: Math.random() * 5,
-  }));
+  const particles = useMemo(() => {
+    return Array.from({ length: 25 }).map((_, index) => ({
+      id: index,
+      size: Math.random() * 3 + 1.5,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: Math.random() * 15 + 10,
+      delay: Math.random() * 5,
+    }));
+  }, []);
 
   const handleCTAClick = (targetId) => {
     const section = document.getElementById(targetId);
@@ -151,7 +153,7 @@ const Hero = () => {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-[#915EFF]/10 rounded-full blur-[130px] -z-5" />
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZGVmcz4KICA8cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MTQzOTkiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4wNSIvPgogIDwvcGF0dGVybj4KPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiIC8+Cjwvc3ZnPg==')] opacity-30 -z-5" />
 
-      <div className="relative pt-[120px] max-w-7xl mx-auto px-6 sm:px-12 md:px-16 flex flex-col gap-10">
+      <div className="relative pt-[120px] max-w-7xl mx-auto px-4 xs:px-6 sm:px-12 md:px-16 flex flex-col gap-10">
         
         {/* Two Column Layout for Desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
@@ -169,7 +171,7 @@ const Hero = () => {
             </motion.div>
 
             <motion.h1 
-              className="text-white text-[38px] sm:text-[48px] md:text-[56px] font-black leading-tight tracking-tight"
+              className="text-white text-[32px] sm:text-[48px] md:text-[56px] font-black leading-tight tracking-tight"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -308,7 +310,7 @@ const Hero = () => {
               </div>
 
               {/* Interactive badge simulator CTA */}
-              <div className="mt-4 bg-[#915EFF]/10 rounded-xl p-3 flex justify-between items-center border border-[#915EFF]/20">
+              <div className="mt-4 bg-[#915EFF]/10 rounded-xl p-3 flex flex-wrap justify-between items-center gap-2 border border-[#915EFF]/20">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
                   <span className="text-white text-[11px] font-medium">Verified Live Reviews Stream</span>

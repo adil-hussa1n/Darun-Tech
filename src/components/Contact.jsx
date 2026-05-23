@@ -147,7 +147,7 @@ const Contact = () => {
             variants={fadeIn("right", "spring", 0.3, 0.75)}
             className="lg:col-span-5 flex flex-col gap-6"
           >
-            <div className="glassmorphism p-8 rounded-3xl border border-white/5 glow-shadow-purple flex flex-col justify-between h-full relative overflow-hidden">
+            <div className="glassmorphism p-6 sm:p-8 rounded-3xl border border-white/5 glow-shadow-purple flex flex-col justify-between h-full relative overflow-hidden">
               <div className="absolute -left-16 -top-16 w-48 h-48 rounded-full bg-[#915EFF]/5" />
               <div className="absolute -right-16 -bottom-16 w-48 h-48 rounded-full bg-blue-500/5" />
               
@@ -218,7 +218,7 @@ const Contact = () => {
             variants={fadeIn("left", "spring", 0.3, 0.75)}
             className="lg:col-span-7"
           >
-            <div className="glassmorphism p-8 rounded-3xl border border-white/5 glow-shadow-purple h-full flex flex-col justify-between">
+            <div className="glassmorphism p-6 sm:p-8 rounded-3xl border border-white/5 glow-shadow-purple h-full flex flex-col justify-between">
               
               <div>
                 {/* Modern Pill Style Tabs */}

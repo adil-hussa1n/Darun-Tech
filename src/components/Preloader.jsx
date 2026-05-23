@@ -9,7 +9,7 @@ const Preloader = () => {
 
   useEffect(() => {
     // Progress counter animation
-    const duration = 2200; // ms
+    const duration = 1200; // ms (Reduced to match the Snappy Sniff parallel load timeline)
     const intervalTime = 30; // ms
     const steps = duration / intervalTime;
     let step = 0;
