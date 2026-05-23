@@ -24,8 +24,7 @@ const Preloader = () => {
     }, intervalTime);
 
     // GSAP animations for letters
-    const tl = gsap.timeline();
-    tl.set({}, {}, 0.2); // initial delay
+    const tl = gsap.timeline({ delay: 0.2 });
     
     tl.to('.logo-letter', {
       y: 0,
@@ -140,7 +139,6 @@ const Preloader = () => {
             <motion.div
               className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#915EFF] to-blue-500 rounded-full"
               style={{ width: `${progress}%` }}
-              layout
             />
             {/* Shimmer light effect */}
             <motion.div 

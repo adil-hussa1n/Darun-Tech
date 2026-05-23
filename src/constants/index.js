@@ -17,7 +17,6 @@ import {
   aws,
   mui,
   
-  gsap,
   framer,
   figma,
   git,
@@ -95,7 +94,7 @@ const technologies = [
   },
   {
     name: "gsap",
-    icon: gsap,
+    icon: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23050816' stroke='%2388CE02' stroke-width='4'/><text x='50' y='58' font-family='sans-serif' font-weight='bold' font-size='24' fill='%2388CE02' text-anchor='middle'>GSAP</text></svg>",
   },
   {
     name: "framer",

@@ -20,7 +20,7 @@ const FeatureCard = ({ icon, title, description, delay }) => {
   }, [controls, inView]);
 
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       className="glassmorphism p-5 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.03] hover:border-[#915EFF]/50 group relative overflow-hidden"
       variants={{
@@ -33,7 +33,7 @@ const FeatureCard = ({ icon, title, description, delay }) => {
     >
       <div className="absolute -right-4 -top-4 w-16 h-16 rounded-full bg-[#915EFF]/10 blur-xl group-hover:bg-[#915EFF]/20 transition-all duration-500"></div>
       <div className="absolute -left-4 -bottom-4 w-20 h-20 rounded-full bg-[#915EFF]/5 blur-xl group-hover:bg-[#915EFF]/10 transition-all duration-500"></div>
-      
+
       <div className="flex items-center mb-3 relative z-10">
         <div className="p-3 rounded-lg bg-[#915EFF]/20 mr-3 group-hover:bg-[#915EFF]/35 transition-all duration-300 shadow-md">
           {icon}
@@ -41,7 +41,7 @@ const FeatureCard = ({ icon, title, description, delay }) => {
         <h3 className="text-white font-bold text-base group-hover:text-[#915EFF] transition-colors duration-300">{title}</h3>
       </div>
       <p className="text-gray-400 text-[13px] group-hover:text-white/80 transition-colors duration-300 relative z-10 leading-relaxed">{description}</p>
-      
+
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[-20deg] translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-1000 ease-in-out"></div>
     </motion.div>
   );
@@ -63,7 +63,7 @@ const StatCard = ({ number, label, delay }) => {
   }, [controls, inView]);
 
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       className="glassmorphism p-5 rounded-2xl text-center relative overflow-hidden group border border-white/5"
       variants={{
@@ -81,8 +81,8 @@ const StatCard = ({ number, label, delay }) => {
 
       <h3 className="text-[#915EFF] text-3xl font-black mb-1 group-hover:scale-105 transition-transform duration-300 tracking-tight">{number}</h3>
       <p className="text-white text-xs font-semibold uppercase tracking-wider opacity-80">{label}</p>
-      
-      <motion.div 
+
+      <motion.div
         className="absolute inset-0 bg-[#915EFF]/2 rounded-2xl"
         animate={{ scale: [1, 1.03, 1] }}
         transition={{ duration: 3, repeat: Infinity, repeatType: "loop" }}
@@ -158,23 +158,23 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZGVmcz4KICA8cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MTQzOTkiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4wNSIvPgogIDwvcGF0dGVybj4KPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiIC8+Cjwvc3ZnPg==')] opacity-30 -z-5" />
 
       <div className="relative pt-[120px] max-w-7xl mx-auto px-4 xs:px-6 sm:px-12 md:px-16 flex flex-col gap-10">
-        
+
         {/* Two Column Layout for Desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
-          
+
           {/* Left Column: Headline & Action */}
           <div className="lg:col-span-7 flex flex-col items-start text-left gap-5">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 bg-[#915EFF]/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#915EFF]/20 text-xs font-semibold text-white/90"
             >
               <FaCheckCircle className="text-[#915EFF] text-sm animate-pulse" />
-              Bangladesh's #1 Verified Business Hub
+              Bangladesh's #1 Verified Review Platform
             </motion.div>
 
-            <motion.h1 
+            <motion.h1
               className="text-white text-[32px] sm:text-[48px] md:text-[56px] font-black leading-tight tracking-tight"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -186,7 +186,7 @@ const Hero = () => {
               </span>
             </motion.h1>
 
-            <motion.p 
+            <motion.p
               className="text-gray-300 text-[16px] sm:text-[18px] leading-relaxed max-w-xl font-medium"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -196,13 +196,13 @@ const Hero = () => {
             </motion.p>
 
             {/* CTAs */}
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleCTAClick('services')}
@@ -212,7 +212,7 @@ const Hero = () => {
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.05, bg: "rgba(255,255,255,0.05)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleCTAClick('about')}
@@ -224,7 +224,7 @@ const Hero = () => {
           </div>
 
           {/* Right Column: Interactive Review Widget Simulator */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-5 w-full flex justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -247,7 +247,7 @@ const Hero = () => {
                     <p className="text-gray-400 text-xs">Retail & Marketplace</p>
                   </div>
                 </div>
-                
+
                 <div className="text-right">
                   <div className="flex items-center gap-1 text-yellow-400">
                     <FaStar className="star-glow text-xs" />
@@ -278,14 +278,13 @@ const Hero = () => {
                     <span className="text-white text-xs font-bold">{sampleReviews[activeReviewIdx].name}</span>
                     <span className="text-gray-400 text-[10px]">{sampleReviews[activeReviewIdx].time}</span>
                   </div>
-                  
+
                   <div className="flex items-center gap-0.5">
                     {Array.from({ length: 5 }).map((_, idx) => (
-                      <FaStar 
-                        key={idx} 
-                        className={`text-[10px] ${
-                          idx < sampleReviews[activeReviewIdx].rating ? 'text-yellow-400 star-glow' : 'text-gray-600'
-                        }`} 
+                      <FaStar
+                        key={idx}
+                        className={`text-[10px] ${idx < sampleReviews[activeReviewIdx].rating ? 'text-yellow-400 star-glow' : 'text-gray-600'
+                          }`}
                       />
                     ))}
                   </div>
@@ -304,9 +303,8 @@ const Hero = () => {
                       <button
                         key={idx}
                         onClick={() => setActiveReviewIdx(idx)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          idx === activeReviewIdx ? 'bg-[#915EFF] w-4' : 'bg-gray-600'
-                        }`}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === activeReviewIdx ? 'bg-[#915EFF] w-4' : 'bg-gray-600'
+                          }`}
                       />
                     ))}
                   </div>
@@ -330,19 +328,19 @@ const Hero = () => {
 
         {/* Feature Highlights Grid */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-          <FeatureCard 
+          <FeatureCard
             icon={<FaUserCheck className="text-[#915EFF] text-lg" />}
             title="Premium Business Profiles"
             description="Establish verification status, customize features, catalog offers, and highlight user-trust seals to stand out."
             delay={0.2}
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<FaStar className="text-[#915EFF] text-lg" />}
             title="Organic Feedback Streams"
             description="Collect detailed ratings directly from shoppers, helping businesses trace metrics and respond in real-time."
             delay={0.4}
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<FaUsers className="text-[#915EFF] text-lg" />}
             title="Active Buyer Networks"
             description="Engage automatically with thousands of registered buyers ready to buy from trust-certified operators."
@@ -352,18 +350,18 @@ const Hero = () => {
 
         {/* Stats Section */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
-          <StatCard 
-            number="10,000+" 
+          <StatCard
+            number="10,000+"
             label="Registered Shoppers"
             delay={0.3}
           />
-          <StatCard 
-            number="5,000+" 
+          <StatCard
+            number="5,000+"
             label="Verified Outlets listed"
             delay={0.5}
           />
-          <StatCard 
-            number="98%" 
+          <StatCard
+            number="98%"
             label="Trust Resolution Rate"
             delay={0.7}
           />
@@ -371,7 +369,7 @@ const Hero = () => {
 
         {/* Scroll Indicator */}
         <div className="w-full flex justify-center items-center py-6 mt-2">
-          <motion.div 
+          <motion.div
             onClick={() => handleCTAClick('about')}
             className="flex flex-col items-center cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
             animate={{ y: [0, 5, 0] }}
@@ -381,7 +379,7 @@ const Hero = () => {
             <FaChevronDown className="text-[#915EFF] text-sm" />
           </motion.div>
         </div>
-        
+
       </div>
     </section>
   );
