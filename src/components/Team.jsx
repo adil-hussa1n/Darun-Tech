@@ -101,10 +101,15 @@ const coreTeam = [
 ];
 
 const TeamMemberCard = ({ member, index, isLeadership }) => {
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 35 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
+      whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className={`relative ${
@@ -169,14 +174,19 @@ const TeamMemberCard = ({ member, index, isLeadership }) => {
 };
 
 const Team = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   return (
     <section className={`${styles.padding} relative z-0`} id="team">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
+          whileInView={isMobile ? { opacity: 1 } : { opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
@@ -192,8 +202,8 @@ const Team = () => {
         <div className="mb-16">
           <motion.h3 
             className="text-white text-[18px] font-bold mb-6 flex items-center gap-3 uppercase tracking-wider px-2"
-            initial={{ opacity: 0, x: -15 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
+            whileInView={isMobile ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
             <span className="text-xs font-black text-[#915EFF] bg-[#915EFF]/10 px-2.5 py-1 rounded">01</span>
@@ -217,8 +227,8 @@ const Team = () => {
         <div>
           <motion.h3 
             className="text-white text-[18px] font-bold mb-6 flex items-center gap-3 uppercase tracking-wider px-2"
-            initial={{ opacity: 0, x: -15 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
+            whileInView={isMobile ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >

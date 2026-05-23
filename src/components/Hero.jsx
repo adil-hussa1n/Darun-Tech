@@ -12,7 +12,9 @@ const FeatureCard = ({ icon, title, description, delay }) => {
   });
 
   useEffect(() => {
-    if (inView) {
+    if (window.innerWidth < 768) {
+      controls.start("visible");
+    } else if (inView) {
       controls.start("visible");
     }
   }, [controls, inView]);
@@ -53,7 +55,9 @@ const StatCard = ({ number, label, delay }) => {
   });
 
   useEffect(() => {
-    if (inView) {
+    if (window.innerWidth < 768) {
+      controls.start("visible");
+    } else if (inView) {
       controls.start("visible");
     }
   }, [controls, inView]);

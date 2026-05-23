@@ -14,6 +14,11 @@ gsap.registerPlugin(ScrollTrigger);
 const useGsap = (elementRef, animation, delay = 0) => {
   useEffect(() => {
     if (elementRef.current) {
+      if (window.innerWidth < 768) {
+        // Instant render on mobile to ensure content loads without ScrollTrigger dependencies
+        gsap.set(elementRef.current, { opacity: 1, y: 0, scale: 1 });
+        return;
+      }
       gsap.fromTo(
         elementRef.current,
         animation.from,
