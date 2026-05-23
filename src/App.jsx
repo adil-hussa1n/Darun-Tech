@@ -4,13 +4,7 @@ import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-const Hero = lazy(() => import('./components/Hero'));
 const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./components/About'));
-const Services = lazy(() => import('./components/Services.new'));
-const Contact = lazy(() => import('./components/Contact'));
-
-// Packages are now integrated directly into the Services component
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -51,10 +45,6 @@ const App = () => {
           }>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/hero" element={<Hero />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/contact" element={<Contact />} />
             </Routes>
           </Suspense>
           <Footer />
