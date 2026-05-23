@@ -1,19 +1,13 @@
-import { lazy, Suspense } from 'react';
+// ALL sections are eagerly imported — they download simultaneously during the preloader
+// window instead of being fetched sequentially after Hero renders.
+// This eliminates the "10-second wait" for below-fold content on slow connections.
 import Hero from '../components/Hero';
-
-const About = lazy(() => import('../components/About'));
-const ServicesNew = lazy(() => import('../components/Services.new'));
-const Team = lazy(() => import('../components/Team'));
-const FAQ = lazy(() => import('../components/FAQ'));
-const Testimonials = lazy(() => import('../components/Testimonials'));
-const Contact = lazy(() => import('../components/Contact'));
-
-// Minimal skeleton shown while a section's JS chunk is loading
-const SectionSkeleton = () => (
-  <div className="w-full py-24 flex justify-center items-center">
-    <div className="w-8 h-8 rounded-full border-2 border-[#915EFF]/40 border-t-[#915EFF] animate-spin" />
-  </div>
-);
+import About from '../components/About';
+import ServicesNew from '../components/Services.new';
+import Team from '../components/Team';
+import FAQ from '../components/FAQ';
+import Testimonials from '../components/Testimonials';
+import Contact from '../components/Contact';
 
 const Home = () => {
   return (
@@ -22,26 +16,14 @@ const Home = () => {
         <Hero />
       </div>
       <div className="relative">
-        <Suspense fallback={<SectionSkeleton />}>
-          <About />
-        </Suspense>
+        <About />
         <div id="services">
-          <Suspense fallback={<SectionSkeleton />}>
-            <ServicesNew />
-          </Suspense>
+          <ServicesNew />
         </div>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Team />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <FAQ />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Testimonials />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Contact />
-        </Suspense>
+        <Team />
+        <FAQ />
+        <Testimonials />
+        <Contact />
       </div>
     </div>
   );
