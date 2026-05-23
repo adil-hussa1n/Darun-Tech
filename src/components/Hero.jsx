@@ -1,39 +1,22 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { FaUserCheck, FaStar, FaUsers, FaArrowRight, FaChevronDown, FaCheckCircle, FaQuoteLeft } from 'react-icons/fa';
-import { useInView } from "react-intersection-observer";
 
+// Simplified: use framer-motion whileInView instead of useAnimation+useInView hook
+// This is reliable on all devices because framer-motion manages the IntersectionObserver internally
 const FeatureCard = ({ icon, title, description, delay }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      controls.start("visible");
-    } else if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   return (
     <motion.div
-      ref={ref}
       className="glassmorphism p-5 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.03] hover:border-[#915EFF]/50 group relative overflow-hidden"
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-      }}
-      initial="hidden"
-      animate={controls}
+      initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ delay, type: 'spring', stiffness: 80 }}
     >
-      <div className="absolute -right-4 -top-4 w-16 h-16 rounded-full bg-[#915EFF]/10 blur-xl group-hover:bg-[#915EFF]/20 transition-all duration-500"></div>
-      <div className="absolute -left-4 -bottom-4 w-20 h-20 rounded-full bg-[#915EFF]/5 blur-xl group-hover:bg-[#915EFF]/10 transition-all duration-500"></div>
-
+      <div className="absolute -right-4 -top-4 w-16 h-16 rounded-full bg-[#915EFF]/10 blur-xl group-hover:bg-[#915EFF]/20 transition-all duration-500" />
+      <div className="absolute -left-4 -bottom-4 w-20 h-20 rounded-full bg-[#915EFF]/5 blur-xl group-hover:bg-[#915EFF]/10 transition-all duration-500" />
       <div className="flex items-center mb-3 relative z-10">
         <div className="p-3 rounded-lg bg-[#915EFF]/20 mr-3 group-hover:bg-[#915EFF]/35 transition-all duration-300 shadow-md">
           {icon}
@@ -41,52 +24,26 @@ const FeatureCard = ({ icon, title, description, delay }) => {
         <h3 className="text-white font-bold text-base group-hover:text-[#915EFF] transition-colors duration-300">{title}</h3>
       </div>
       <p className="text-gray-400 text-[13px] group-hover:text-white/80 transition-colors duration-300 relative z-10 leading-relaxed">{description}</p>
-
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[-20deg] translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-1000 ease-in-out"></div>
     </motion.div>
   );
 };
 
 const StatCard = ({ number, label, delay }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      controls.start("visible");
-    } else if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   return (
     <motion.div
-      ref={ref}
       className="glassmorphism p-5 rounded-2xl text-center relative overflow-hidden group border border-white/5"
-      variants={{
-        hidden: { opacity: 0, scale: 0.95 },
-        visible: { opacity: 1, scale: 1 }
-      }}
-      initial="hidden"
-      animate={controls}
+      initial={{ opacity: isMobile ? 1 : 0, scale: isMobile ? 1 : 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ delay, type: 'spring', stiffness: 100 }}
       whileHover={{ y: -5, borderColor: 'rgba(145, 94, 255, 0.4)', boxShadow: '0 10px 30px -5px rgba(145, 94, 255, 0.25)' }}
     >
       <div className="absolute top-0 right-0 w-12 h-12 bg-[#915EFF]/10 group-hover:bg-[#915EFF]/20 transition-all duration-300">
-        <div className="absolute bottom-0 left-0 w-0 h-0 border-t-[12px] border-r-[12px] border-t-transparent border-r-[#151030]"></div>
+        <div className="absolute bottom-0 left-0 w-0 h-0 border-t-[12px] border-r-[12px] border-t-transparent border-r-[#151030]" />
       </div>
-
       <h3 className="text-[#915EFF] text-3xl font-black mb-1 group-hover:scale-105 transition-transform duration-300 tracking-tight">{number}</h3>
       <p className="text-white text-xs font-semibold uppercase tracking-wider opacity-80">{label}</p>
-
-      <motion.div
-        className="absolute inset-0 bg-[#915EFF]/2 rounded-2xl"
-        animate={{ scale: [1, 1.03, 1] }}
-        transition={{ duration: 3, repeat: Infinity, repeatType: "loop" }}
-      />
     </motion.div>
   );
 };
@@ -156,12 +113,14 @@ const Hero = () => {
         />
       ))}
 
-      {/* Main gradient background */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#100d25] via-[#050816] to-[#050816] -z-10" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-[#915EFF]/10 rounded-full blur-[130px] -z-5" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZGVmcz4KICA8cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgIDxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MTQzOTkiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4wNSIvPgogIDwvcGF0dGVybj4KPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiIC8+Cjwvc3ZnPg==')] opacity-30 -z-5" />
+      {/* Main gradient background — pointer-events-none prevents blocking touch events */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#100d25] via-[#050816] to-[#050816] pointer-events-none" style={{zIndex:0}} />
+      {/* Decorative blob — z-index:0 so it's behind the z-10 content div */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-[#915EFF]/10 rounded-full blur-[130px] pointer-events-none" style={{zIndex:0}} />
+      <div className="absolute inset-0 opacity-20 pointer-events-none" style={{zIndex:0,backgroundImage:"radial-gradient(circle at 1px 1px, rgba(97,67,153,0.15) 1px, transparent 0)",backgroundSize:"40px 40px"}} />
 
-      <div className="relative pt-[120px] max-w-7xl mx-auto px-4 xs:px-6 sm:px-12 md:px-16 flex flex-col gap-10">
+      {/* z-10 ensures content sits above the z-0 decorative backgrounds */}
+      <div className="relative z-10 pt-[120px] max-w-7xl mx-auto px-4 xs:px-6 sm:px-12 md:px-16 flex flex-col gap-10">
 
         {/* Two Column Layout for Desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
