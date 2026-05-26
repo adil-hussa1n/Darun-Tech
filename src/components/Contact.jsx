@@ -157,13 +157,13 @@ const Contact = () => {
                 <div className="space-y-6">
                   {/* Address */}
                   <div className="flex items-start group">
-                    <div className="bg-[#151030] p-3.5 rounded-xl mr-4 border border-white/5 group-hover:bg-[#915EFF] group-hover:text-white transition-colors duration-300">
+                    {/* <div className="bg-[#151030] p-3.5 rounded-xl mr-4 border border-white/5 group-hover:bg-[#915EFF] group-hover:text-white transition-colors duration-300">
                       <FaMapMarkerAlt className="text-[#915EFF] text-base group-hover:text-white transition-colors duration-300" />
-                    </div>
-                    <div>
+                    </div> */}
+                    {/* <div>
                       <span className="font-semibold text-white text-[15px] block">Corporate Headquarters</span>
                       <p className="text-gray-400 text-xs mt-0.5 leading-relaxed">Kazitula Road, Sylhet, Bangladesh</p>
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Phone */}
@@ -233,7 +233,7 @@ const Contact = () => {
                   >
                     Send Message
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => setActiveTab('faq')}
                     className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
                       activeTab === 'faq' 
@@ -242,7 +242,7 @@ const Contact = () => {
                     }`}
                   >
                     Quick FAQs
-                  </button>
+                  </button> */}
                 </div>
                 
                 {/* Animate tab content */}

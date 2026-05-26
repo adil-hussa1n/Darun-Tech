@@ -52,10 +52,7 @@ const Hero = () => {
   const [activeReviewIdx, setActiveReviewIdx] = useState(0);
 
   const sampleReviews = [
-    { name: "Rafiqul I.", rating: 5, time: "2m ago", text: "Incredible response from QuickMart! The verified trust seal makes shopping worry-free.", brand: "QuickMart" },
-    { name: "Anika T.", rating: 5, time: "15m ago", text: "GearXpert resolved my support ticket in minutes. Highly recommend finding verified businesses here.", brand: "GearXpert" },
-    { name: "Zahid H.", rating: 4, time: "1h ago", text: "Great deals, verified listing helps build trust immediately. Love using Darun Tech.", brand: "justbuyz" }
-  ];
+    { text: "A simple and powerful system designed to help businesses stay organized and grow smarter.",  },];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -127,7 +124,7 @@ const Hero = () => {
 
           {/* Left Column: Headline & Action */}
           <div className="lg:col-span-7 flex flex-col items-start text-left gap-5">
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -135,7 +132,7 @@ const Hero = () => {
             >
               <FaCheckCircle className="text-[#915EFF] text-sm animate-pulse" />
               Bangladesh's #1 Verified Review Platform
-            </motion.div>
+            </motion.div> */}
 
             <motion.h1
               className="text-white text-[32px] sm:text-[48px] md:text-[56px] font-black leading-tight tracking-tight"
@@ -143,9 +140,9 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Unlock the Power of <br />
+              Built To Support <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#915EFF] to-blue-400">
-                Reviews with Darun
+                Business Growth
               </span>
             </motion.h1>
 
@@ -155,7 +152,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              Connecting local businesses with shoppers to construct verified, authentic online reputations. Elevate your presence and boost buyer trust instantly.
+              From digital promotion to business management solutions, Darun helps businesses stay organized, grow faster, and connect better with customers.
             </motion.p>
 
             {/* CTAs */}
@@ -168,21 +165,21 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleCTAClick('services')}
+                onClick={() => handleCTAClick('contact')}
                 className="bg-gradient-to-r from-[#915EFF] to-blue-500 text-white font-bold text-[14px] px-8 py-3.5 rounded-xl shadow-lg shadow-[#915EFF]/20 hover:shadow-[#915EFF]/30 flex items-center justify-center gap-2 group transition-all"
               >
-                Get Started Free
+                Contact us
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
-              <motion.button
+              {/* <motion.button
                 whileHover={{ scale: 1.05, bg: "rgba(255,255,255,0.05)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleCTAClick('about')}
                 className="bg-transparent border border-white/20 hover:border-white/50 text-white font-bold text-[14px] px-8 py-3.5 rounded-xl flex items-center justify-center transition-all"
               >
                 Learn More
-              </motion.button>
+              </motion.button> */}
             </motion.div>
           </div>
 
@@ -198,20 +195,17 @@ const Hero = () => {
               <div className="flex justify-between items-center border-b border-white/5 pb-4 mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#915EFF] to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-inner">
-                    DM
+                    DB
                   </div>
                   <div>
                     <h4 className="text-white font-bold text-sm flex items-center gap-1.5">
-                      Darun Mock Store
-                      <span className="bg-blue-500 text-[10px] text-white px-1.5 py-0.5 rounded-full font-extrabold flex items-center justify-center scale-95 shadow-md shadow-blue-500/20">
-                        ✓ VERIFIED
-                      </span>
+                      Darun For Business
+                      
                     </h4>
-                    <p className="text-gray-400 text-xs">Retail & Marketplace</p>
                   </div>
                 </div>
 
-                <div className="text-right">
+                {/* <div className="text-right">
                   <div className="flex items-center gap-1 text-yellow-400">
                     <FaStar className="star-glow text-xs" />
                     <FaStar className="star-glow text-xs" />
@@ -220,7 +214,7 @@ const Hero = () => {
                     <FaStar className="star-glow text-xs" />
                   </div>
                   <p className="text-white text-xs font-bold mt-0.5">4.9 / 5.0 Rating</p>
-                </div>
+                </div> */}
               </div>
 
               {/* Simulation display card */}
@@ -242,50 +236,40 @@ const Hero = () => {
                     <span className="text-gray-400 text-[10px]">{sampleReviews[activeReviewIdx].time}</span>
                   </div>
 
-                  <div className="flex items-center gap-0.5">
-                    {Array.from({ length: 5 }).map((_, idx) => (
-                      <FaStar
-                        key={idx}
-                        className={`text-[10px] ${idx < sampleReviews[activeReviewIdx].rating ? 'text-yellow-400 star-glow' : 'text-gray-600'
-                          }`}
-                      />
-                    ))}
-                  </div>
+               
 
-                  <p className="text-gray-300 text-xs italic leading-relaxed mt-1">
+                  <p className="text-gray-300 text-lg italic leading-relaxed mt-1">
                     "{sampleReviews[activeReviewIdx].text}"
                   </p>
                 </motion.div>
 
-                <div className="flex justify-between items-center mt-3 pt-3 border-t border-white/5">
-                  <span className="text-[11px] font-bold text-gray-400">
-                    Reviewed Brand: <span className="text-[#915EFF]">{sampleReviews[activeReviewIdx].brand}</span>
-                  </span>
-                  <div className="flex gap-1.5">
-                    {sampleReviews.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setActiveReviewIdx(idx)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === activeReviewIdx ? 'bg-[#915EFF] w-4' : 'bg-gray-600'
-                          }`}
-                      />
-                    ))}
-                  </div>
-                </div>
+              
               </div>
 
               {/* Interactive badge simulator CTA */}
               <div className="mt-4 bg-[#915EFF]/10 rounded-xl p-3 flex flex-wrap justify-between items-center gap-2 border border-[#915EFF]/20">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
-                  <span className="text-white text-[11px] font-medium">Verified Live Reviews Stream</span>
+                  <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+onClick={() => window.open('https://darun-commerce.vercel.app/', '_blank')}                className="bg-gradient-to-r from-[#915EFF] to-blue-500 text-white font-semibold text-[14px] px-6 py-2 rounded-xl shadow-lg shadow-[#915EFF]/20 hover:shadow-[#915EFF]/30 flex items-center justify-center gap-2 group transition-all"
+              >
+                Use Free Trial
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                
+              </motion.button>
                 </div>
+                
                 <span className="text-[#915EFF] text-xs font-bold hover:underline cursor-pointer flex items-center gap-1">
-                  Embed Widget <FaChevronDown className="rotate-[-90deg] text-[10px]" />
+                  Login 
                 </span>
+
               </div>
+              
             </div>
           </motion.div>
+
 
         </div>
 
@@ -293,26 +277,26 @@ const Hero = () => {
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
           <FeatureCard
             icon={<FaUserCheck className="text-[#915EFF] text-lg" />}
-            title="Premium Business Profiles"
-            description="Establish verification status, customize features, catalog offers, and highlight user-trust seals to stand out."
+            title="Business Management Solutions"
+            description="Smart systems designed to simplify daily business operations."
             delay={0.2}
           />
           <FeatureCard
             icon={<FaStar className="text-[#915EFF] text-lg" />}
-            title="Organic Feedback Streams"
-            description="Collect detailed ratings directly from shoppers, helping businesses trace metrics and respond in real-time."
+            title="Digital Growth Support"
+            description="Helping businesses improve visibility, promotion, and customer engagement."
             delay={0.4}
           />
           <FeatureCard
             icon={<FaUsers className="text-[#915EFF] text-lg" />}
-            title="Active Buyer Networks"
-            description="Engage automatically with thousands of registered buyers ready to buy from trust-certified operators."
+            title="Business Development Strategy"
+            description="Focused on creating practical solutions for long-term business growth."
             delay={0.6}
           />
         </div>
 
         {/* Stats Section */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
+        {/* <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
           <StatCard
             number="10,000+"
             label="Registered Shoppers"
@@ -328,7 +312,7 @@ const Hero = () => {
             label="Trust Resolution Rate"
             delay={0.7}
           />
-        </div>
+        </div> */}
 
         {/* Scroll Indicator */}
         <div className="w-full flex justify-center items-center py-6 mt-2">

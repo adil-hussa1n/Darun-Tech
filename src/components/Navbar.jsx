@@ -24,7 +24,7 @@ const Navbar = () => {
       // Section highlight logic
       const sections = [
         { id: 'about', name: 'About' },
-        { id: 'services', name: 'Services' },
+        // { id: 'services', name: 'Services' },
         { id: 'contact', name: 'Contact' }
       ];
       let found = false;
@@ -108,8 +108,8 @@ const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Darun
-              <span className='text-[#915EFF] ml-1'>Tech</span>
+              Darun Tech
+              <span className='text-[#915EFF] ml-1'>Private Limited</span>
             </motion.p>
             <motion.p 
               className='text-gray-400 text-[10px] font-semibold tracking-wider uppercase opacity-80 hidden xs:block'
@@ -117,14 +117,13 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Unlock the Power of Reviews
-            </motion.p>
+Grow  Your Business With Darun           </motion.p>
           </div>
         </Link>
 
         {/* Desktop Links */}
         <ul className='list-none hidden sm:flex flex-row gap-8 lg:gap-10'>
-          {['Home', 'About', 'Services', 'Contact'].map((item, index) => (
+          {['Home', 'About', 'Contact'].map((item, index) => (
             <motion.li
               key={item}
               className={`font-semibold cursor-pointer text-[14px] lg:text-[15px] transition-colors duration-300 relative py-1 ${

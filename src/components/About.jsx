@@ -39,21 +39,24 @@ const About = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-4 text-gray-300 text-[16px] sm:text-[18px] max-w-3xl leading-[28px]"
         >
-          Darun empowers businesses to thrive in the digital age by leveraging shopper reviews and feedback. We build bridges of credibility and communication between consumers and verified operators.
-        </motion.p>
+At Darun, we believe business growth becomes easier with the right systems and smart strategies.
+
+We develop business management solutions, digital growth strategies, and operational tools designed to help modern businesses work more efficiently and grow with confidence.
+
+Our mission is to simplify business operations through practical technology and meaningful innovation.        </motion.p>
 
         {/* Core Offers Services Cards */}
-        <div className="mt-16 flex flex-wrap gap-8 justify-center">
+        {/* <div className="mt-16 flex flex-wrap gap-8 justify-center">
           {services.map((service, index) => (
             <ServiceCard key={service.title} index={index} {...service} />
           ))}
-        </div>
+        </div> */}
 
         {/* Two Column details: Why Choose and Communities */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-8"> */}
 
           {/* Why Choose Us */}
-          <motion.div
+          {/* <motion.div
             variants={fadeIn("right", "spring", 0.3, 0.75)}
             className="glassmorphism p-6 sm:p-8 rounded-[20px] border border-white/5 glow-shadow-purple relative overflow-hidden group"
           >
@@ -78,14 +81,14 @@ const About = () => {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </motion.div> */}
 
           {/* Active Shopper Communities */}
-          <motion.div
+          {/* <motion.div
             variants={fadeIn("left", "spring", 0.3, 0.75)}
-            className="glassmorphism p-6 sm:p-8 rounded-[20px] border border-white/5 glow-shadow-purple relative overflow-hidden group flex flex-col justify-between"
-          >
-            <div className="absolute -left-10 -bottom-10 w-24 h-24 rounded-full bg-blue-500/5 group-hover:bg-blue-500/10 transition-all duration-300" />
+            className="glassmorphism p-6 sm:p-8 rounded-[20px] border border-white/5 glow-shadow-purple relative overflow-hidden group flex flex-col justify-between" */}
+          {/* > */}
+            {/* <div className="absolute -left-10 -bottom-10 w-24 h-24 rounded-full bg-blue-500/5 group-hover:bg-blue-500/10 transition-all duration-300" />
 
             <div>
               <h3 className="text-white text-[22px] font-bold mb-6 flex items-center gap-2">
@@ -111,20 +114,20 @@ const About = () => {
                   </div>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* Quick summary visual card */}
-            <div className="mt-8 bg-[#050816]/60 p-4 rounded-xl border border-white/5 text-center">
+            {/* <div className="mt-8 bg-[#050816]/60 p-4 rounded-xl border border-white/5 text-center">
               <span className="text-white text-xs font-semibold block uppercase tracking-wider text-gray-400">Current Reach</span>
               <span className="text-2xl font-black text-white mt-1 block">
                 10k+ Shoppers in Bangladesh
               </span>
-            </div>
-          </motion.div>
-        </div>
+            </div> */}
+          {/* </motion.div>
+        </div> */}
 
         {/* Floating Stats Counters */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { value: "10,000+", label: "Active Community Members" },
             { value: "Verified", label: "Business Security Badge" },
@@ -139,7 +142,7 @@ const About = () => {
               <p className="text-white text-[14px] font-semibold mt-1 opacity-80">{stat.label}</p>
             </motion.div>
           ))}
-        </div>
+        </div> */}
 
       </div>
     </section>
