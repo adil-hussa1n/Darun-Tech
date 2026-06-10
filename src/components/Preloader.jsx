@@ -87,22 +87,17 @@ const Preloader = () => {
             </div>
           </div>
 
-          {/* Letters */}
-          <div className="flex items-center justify-center mb-3">
-            <div className="flex">
-              {['D','A','R','U','N'].map((l, i) => (
-                <span key={i} className="pl-letter text-2xl font-black text-white mx-0.5"
-                      style={{animationDelay:`${.15 + i*.07}s`}}>{l}</span>
-              ))}
-              <span className="pl-letter text-2xl font-black text-[#915EFF] mx-0.5"
-                    style={{animationDelay:`${.15 + 5*.07}s`}}>TECH</span>
-            </div>
+          {/* Brand Heading */}
+          <div className="flex items-center justify-center mb-3 text-center">
+            <h2 className="pl-letter text-xl font-black text-white tracking-wide uppercase">
+              Darun Tech <span className="text-[#915EFF]">Private Limited</span>
+            </h2>
           </div>
 
           {/* Tagline */}
-          <p className="pl-tagline text-gray-400 text-xs font-semibold uppercase tracking-widest
-                        text-center max-w-[280px]">
-            Unlock the Power of Reviews
+          <p className="pl-tagline text-gray-400 text-xs font-semibold uppercase tracking-wider
+                        text-center max-w-[320px]">
+            Grow your Business With Darun
           </p>
 
           {/* Progress bar */}
