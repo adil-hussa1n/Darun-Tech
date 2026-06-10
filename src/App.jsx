@@ -1,10 +1,11 @@
 import { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Preloader from './components/Preloader';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+// import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
+import Maintenance from './pages/Maintenance';
 
-const Home = lazy(() => import('./pages/Home'));
+// const Home = lazy(() => import('./pages/Home'));
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -35,7 +36,11 @@ const App = () => {
           {renderPreloader && <Preloader />}
         </div>
 
-        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center w-full overflow-x-hidden">
+        {/*
+          Temporary Maintenance Mode: Commented out original components.
+          Uncomment below and remove <Maintenance /> to restore the main website.
+        */}
+        {/* <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center w-full overflow-x-hidden">
           <Navbar />
           <Suspense fallback={
             <div className="flex justify-center items-center min-h-screen">
@@ -47,7 +52,9 @@ const App = () => {
             </Routes>
           </Suspense>
           <Footer />
-        </div>
+        </div> */}
+
+        <Maintenance />
       </div>
     </Router>
   );
