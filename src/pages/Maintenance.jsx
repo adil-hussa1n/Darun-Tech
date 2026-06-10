@@ -281,7 +281,7 @@ const Maintenance = () => {
                 Director and Operations Manager
               </p>
               <p className="text-gray-400 text-xs mt-3 leading-relaxed max-w-md">
-                Reach out directly for assistance, questions, or account services while we wrap up the website upgrades.
+                Reach out directly for assistance, questions, or account services at <span className="text-white font-semibold">asifrh1222@gmail.com</span> while we wrap up the website upgrades.
               </p>
             </div>
 
@@ -296,6 +296,17 @@ const Maintenance = () => {
               >
                 <FaPhone className="text-xs" />
                 <span>Call Asifur</span>
+              </motion.a>
+
+              {/* Email Director Trigger */}
+              <motion.a
+                href="mailto:asifrh1222@gmail.com"
+                className="flex-grow md:flex-grow-0 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#151030]/60 hover:bg-[#151030]/90 text-white font-bold text-xs rounded-xl border border-white/10 hover:border-[#915EFF]/30 transition-all duration-200"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <FaEnvelope className="text-gray-400 text-xs" />
+                <span>Email Asifur</span>
               </motion.a>
 
               {/* Copy Clipboard Trigger */}
@@ -415,11 +426,11 @@ const Maintenance = () => {
             </p>
             <div className="mt-2.5 flex flex-col sm:flex-row gap-4 text-xs text-gray-400 justify-center md:justify-start">
               <a 
-                href="mailto:daruntechpvtltd@gmail.com" 
+                href="mailto:daruntech.pvt.ltd@gmail.com" 
                 className="flex items-center justify-center gap-2 hover:text-[#915EFF] transition-colors"
               >
                 <FaEnvelope className="text-[#915EFF] text-xs" />
-                <span>daruntechpvtltd@gmail.com</span>
+                <span>daruntech.pvt.ltd@gmail.com</span>
               </a>
               <a 
                 href="tel:01831877987" 
