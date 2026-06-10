@@ -7,7 +7,7 @@ const Preloader = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const duration = 750;
+    const duration = 850;
     const intervalTime = 25;
     const steps = duration / intervalTime;
     let step = 0;
