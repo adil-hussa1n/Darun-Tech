@@ -446,7 +446,7 @@ const Maintenance = () => {
                 className="flex items-center justify-center gap-2 hover:text-[#915EFF] transition-colors"
               >
                 <FaGlobe className="text-[#915EFF] text-xs" />
-                <span>www.daruntechpvtltd.com</span>
+                <span>www.daruntech.com</span>
               </a>
             </div>
           </div>
